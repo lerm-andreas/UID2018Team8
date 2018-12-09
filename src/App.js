@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import cyan from "@material-ui/core/es/colors/cyan";
+import createMuiTheme from "@material-ui/core/es/styles/createMuiTheme";
+import lightBlue from "@material-ui/core/es/colors/lightBlue";
+import {MuiThemeProvider} from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: cyan,
+        secondary: lightBlue
+    }
+});
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <MuiThemeProvider theme={theme}>
+            <div className="app">
+              <Header/>
+              <Main/>
+            </div>
+        </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withStyles({ withTheme: true })(App);
