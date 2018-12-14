@@ -9,6 +9,7 @@ const UserHeader = () => {
             <IconButton>
                 <AccountCircle/>
             </IconButton>
+            50 Cluj coins
             <Button variant={'contained'}>Search</Button>
             <Button variant={'outlined'}>Logout</Button>
         </div>

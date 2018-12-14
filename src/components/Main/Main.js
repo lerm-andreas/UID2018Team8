@@ -1,16 +1,17 @@
-import {Component} from "react";
-import React from "react";
-import { Switch, Route } from 'react-router-dom'
-import {Placeholder} from "./Placeholder";
-import LoginForm from "./LoginForm";
+import React, {Component} from "react";
+import {Route, Switch} from 'react-router-dom'
+import LoginPage from "./LoginPage/LoginPage";
+import {MainPage} from "./MainPage";
+import {ShopPage} from "./ShopPage/ShopPage";
 
 class Main extends Component {
 
     render() {
         return (
             <Switch>
-                <Route exact path={"/"} component={LoginForm}/>
-                <Route path={"/*"} component={Placeholder}/>
+                <Route exact path={"/"} component={LoginPage}/>
+                <Route path={"/home"} component={MainPage}/>
+                <Route exact path={"/shoppingPage"} component={ShopPage}/>
             </Switch>
         )
     }
