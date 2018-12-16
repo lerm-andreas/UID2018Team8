@@ -5,6 +5,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import './UserHeader.css'
 import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
 import UserMenu from "../Main/UserMenu/UserMenu";
+import {withRouter} from "react-router-dom";
 
 class UserHeader extends Component {
 
@@ -38,12 +39,12 @@ class UserHeader extends Component {
                         {open ? (<UserMenu anchorEl={this.state.anchorEl}/>) : null}
                         50 Cluj coins
                         <Button variant={'contained'}>Search</Button>
-                        <Button variant={'outlined'}>Logout</Button>
+                        <Button variant={'outlined'} onClick ={()=> this.props.history.push('/')}>Logout</Button>
                     </div>
                 </ClickAwayListener>
             </div>
         )
     }
-};
+}
 
-export default UserHeader;
+export default withRouter(UserHeader);

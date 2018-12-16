@@ -4,53 +4,34 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ShopItem from "./ShopItem/ShopItem";
-
-
-const nr_items = 6;
-let items = []
+import {shoppingItems} from "../../../../BACKEND";
 
 
 const styles = theme => ({
-    root: {
+    item: {
+        padding: '10px 10px 20px 100px !important',
+    },
+    container: {
+        padding: 30,
         flexGrow: 1,
-    },
-    control: {
-        padding: theme.spacing.unit * 2,
-    },
+    }
 });
 
 class ShopList extends React.Component {
-    state = {
-        spacing: '16',
-    };
 
 
     render() {
-        const {classes} = this.props;
-        const {spacing} = this.state;
 
+        const {classes} = this.props;
 
         return (
-            <Grid container className={classes.root} spacing={16}>
-                <Grid item xs={12}>
-                    <Grid container className={classes.demo} justify="center"
-                          spacing={Number(spacing)}>
-                        {[0, 1, 2].map(value => (
-                            <Grid key={value} item sm={3}>
-                                <ShopItem/>
-                            </Grid>
-                        ))}
+            <Grid container className={classes.container} spacing={24}>
+                {shoppingItems.map(value => (
+                    <Grid key={value} item xs={4} className={classes.item}>
+                        <ShopItem title={value.title} image={value.image}
+                                  description={value.description} price={value.price}/>
                     </Grid>
-                    <Grid container className={classes.demo} justify="center"
-                          spacing={Number(spacing)}>
-                        {[0, 1, 2].map(value => (
-                            <Grid key={value} item sm={3}>
-                                <ShopItem/>
-                            </Grid>
-                        ))}
-
-                    </Grid>
-                </Grid>
+                ))}
             </Grid>
         );
     }

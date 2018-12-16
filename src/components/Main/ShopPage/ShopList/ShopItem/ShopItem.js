@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,42 +8,46 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CardHeader from "@material-ui/core/CardHeader/CardHeader";
+
 
 const styles = {
     card: {
-        maxWidth: 345,
+        width: 345,
+        height: 430
     },
     media: {
-        height: 140,
+        height: 250,
+        width: 345
     },
 };
 
 function ShopItem(props) {
-    const { classes } = props;
+    const {classes} = props;
     return (
         <Card className={classes.card}>
+
+            <CardHeader
+                title={props.title}/>
+
             <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image="/steag_U.jpg"
-                    title="Contemplative Reptile"
+                <CardMedia style={styles}
+                           className={classes.media}
+                           image={props.image}
+
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
+                        {props.price + " Cluj coins"}
                     </Typography>
                     <Typography component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
+                        {props.description}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary">
-                    Share
-                </Button>
-                <Button size="small" color="primary">
-                    Learn More
+                    Add to basket
                 </Button>
             </CardActions>
         </Card>

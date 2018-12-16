@@ -9,6 +9,5 @@ export const ShopPage = () => {
             <ShopList/>
         </div>
     )
-}
+};
 
-export default ShopPage
