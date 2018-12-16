@@ -2,23 +2,23 @@ import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {withRouter} from "react-router-dom";
+import {shoppingPage} from "../../../BACKEND";
 
-const UserMenu = (props) => {
-
-    let anchorEl = props.anchorEl;
-
+export const UserMenu = (props) => {
     return (
-        <div>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}>
-                <MenuItem onClick={() => props.history.push('/')}>Profile</MenuItem>
-                <MenuItem onClick={() => props.history.push('/')}>My account</MenuItem>
-                <MenuItem onClick={() => props.history.push('/')}>Logout</MenuItem>
-            </Menu>
-        </div>
+        <Menu
+            id="simple-menu"
+            anchorEl={props.anchorEl}
+            open={true}
+        >
+            <MenuItem onClick={() => props.history.push('/')}>My account</MenuItem>
+            <MenuItem onClick={() => props.history.push(shoppingPage)}>Shopping
+                Page</MenuItem>
+            <MenuItem onClick={() => props.history.push('/')}>Events Page</MenuItem>
+            <MenuItem onClick={() => props.history.push('/')}>Logout</MenuItem>
+        </Menu>
     );
-};
+}
+
 
 export default withRouter(UserMenu);

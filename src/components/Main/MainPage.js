@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Map from "./Map/Map";
 import UserHeader from "../Header/UserHeader";
 import './MainPage.css'
-import UserMenu from "./UserMenu/UserMenu";
 
 export class MainPage extends Component {
 
@@ -23,9 +22,9 @@ export class MainPage extends Component {
 
 
     render() {
+
         return <div className="mainPage">
-            <UserHeader onClick={this.handleIconClick.bind(this)}/>
-            <UserMenu anchorEl={this.state.anchorEl}/>
+            <UserHeader />
             <Map/>
         </div>
     }
