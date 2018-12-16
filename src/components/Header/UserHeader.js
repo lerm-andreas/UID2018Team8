@@ -15,9 +15,12 @@ class UserHeader extends Component {
     };
 
     handleClickAway = () => {
-        this.setState({
-            open: false,
-        });
+        setTimeout(function () { //Start the timer
+            this.setState({open: false}) //After 1 second, set render to true
+        }.bind(this), 1000)
+        // this.setState({
+        //     open: false,
+        // });
     };
 
     handleClick = (event) => {
@@ -32,15 +35,14 @@ class UserHeader extends Component {
         return (
             <div>
                 <ClickAwayListener onClickAway={this.handleClickAway}>
-                    <div>
-                        <IconButton onClick={this.handleClick}>
-                            <AccountCircle/>
-                        </IconButton>
-                        {open ? (<UserMenu anchorEl={this.state.anchorEl}/>) : null}
-                        50 Cluj coins
-                        <Button variant={'contained'}>Search</Button>
-                        <Button variant={'outlined'} onClick ={()=> this.props.history.push('/')}>Logout</Button>
-                    </div>
+                    <IconButton onClick={this.handleClick}>
+                        <AccountCircle/>
+                    </IconButton>
+                    {open ? (<UserMenu anchorEl={this.state.anchorEl}/>) : null}
+                    50 Cluj coins
+                    <Button variant={'contained'}>Search</Button>
+                    <Button variant={'outlined'}
+                            onClick={() => this.props.history.push('/')}>Logout</Button>
                 </ClickAwayListener>
             </div>
         )
