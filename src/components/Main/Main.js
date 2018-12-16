@@ -4,17 +4,15 @@ import LoginPage from "./LoginPage/LoginPage";
 import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
 
-class Main extends Component {
+const Main = () => {
+    return (
+        <Switch>
+            <Route exact path={"/"} component={LoginPage}/>
+            <Route path={"/home"} component={MainPage}/>
+            <Route exact path={"/shoppingPage"} component={ShopPage}/>
+        </Switch>
+    )
 
-    render() {
-        return (
-            <Switch>
-                <Route exact path={"/"} component={LoginPage}/>
-                <Route path={"/home"} component={MainPage}/>
-                <Route exact path={"/shoppingPage"} component={ShopPage}/>
-            </Switch>
-        )
-    }
-}
+};
 
 export default Main;
