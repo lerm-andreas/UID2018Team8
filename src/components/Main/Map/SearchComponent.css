@@ -1,0 +1,18 @@
+.testLine {
+    float: left;
+}
+
+.testLine1 {
+    padding-top: 5vh;
+    margin: auto;
+    float: right;
+}
+
+.test {
+    display: block;
+}
+
+.search-sel {
+    min-width: 20vw;
+    margin-bottom: 10vh;
+}

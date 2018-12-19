@@ -40,7 +40,7 @@ class UserHeader extends Component {
                     </IconButton>
                     {open ? (<UserMenu anchorEl={this.state.anchorEl}/>) : null}
                     50 Cluj coins
-                    <Button variant={'contained'}>Search</Button>
+                    <Button variant={'contained'} onClick={this.props.handleSearch}>Search</Button>
                     <Button variant={'outlined'}
                             onClick={() => this.props.history.push('/')}>Logout</Button>
                 </ClickAwayListener>
