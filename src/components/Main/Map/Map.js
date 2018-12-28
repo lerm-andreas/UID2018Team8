@@ -1,18 +1,27 @@
 import React, {Component} from 'react';
-import GoogleMapReact, {GoogleApiWrapper} from 'google-map-react';
+import GoogleMapReact from 'google-map-react';
 import SearchComponent from "./SearchComponent";
 import './SearchComponent.css'
-
-const AnyReactComponent = ({text}) => <div>{text}</div>;
+import Marker from "./Marker";
 
 class Map extends Component {
-    static defaultProps = {
-        center: {
-            lat: 46.77,
-            lng: 23.59
-        },
-        zoom: 11
-    };
+    static defaultProps = {};
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            position: {
+                lat: 46.77,
+                lng: 23.59
+            },
+            center: {
+                lat: 46.77,
+                lng: 23.59
+            },
+            zoom: 11,
+        }
+    }
+
 
     render() {
         let h = '100vh';
@@ -24,26 +33,22 @@ class Map extends Component {
             <div className={'test'}>
                 <div className={'testLine'} style={{height: h, width: w}}>
                     <GoogleMapReact
-                        defaultCenter={this.props.center}
-                        defaultZoom={this.props.zoom}
+                        apiKey={"AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats"}
+                        defaultCenter={this.state.center}
+                        defaultZoom={this.state.zoom}
+
                     >
-                        <AnyReactComponent
-                            lat={59.955413}
-                            lng={30.337844}
-                            text={'Kreyser Avrora'}
-                        />
+                        <Marker {...this.state.position} text={'A'}/>
                     </GoogleMapReact>
                 </div>
                 {this.props.searchOpen &&
-                    <div className={'testLine1'} style={{height: h, width: '30%'}}>
-                        <SearchComponent/>
-                    </div>}
+                <div className={'testLine1'} style={{height: h, width: '30%'}}>
+                    <SearchComponent/>
+                </div>}
             </div>
-            );
-        }
+        );
+    }
 }
 
 export default Map
-// export default GoogleApiWrapper({
-//     apiKey: "AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats",
-// })(Map);
+
