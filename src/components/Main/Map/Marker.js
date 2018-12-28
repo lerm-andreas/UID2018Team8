@@ -1,19 +1,27 @@
-import React, {Component} from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
+import React from 'react';
+import {withStyles} from '@material-ui/core/styles';
+import IconButton from "@material-ui/core/IconButton/IconButton";
+import Icon from "@material-ui/core/Icon/Icon";
 
-import {markerStyle} from './MarkerStyle.js';
+const styles = theme => ({
+    fab: {
+        margin: theme.spacing.unit,
+    },
+    extendedIcon: {
+        marginRight: theme.spacing.unit,
+    },
+});
 
-export default class Marker extends Component {
 
-    static defaultProps = {};
+const Marker = (props) => {
 
-    shouldComponentUpdate = shouldPureComponentUpdate;
+    const {classes} = props;
 
-    render() {
-        return (
-            <div style={markerStyle}>
-                {this.props.text}
-            </div>
-        );
-    }
-}
+    return (
+        <IconButton aria-label="Delete" className={classes.fab}>
+            <Icon>place</Icon>
+        </IconButton>
+    )
+};
+
+export default withStyles(styles)(Marker);
