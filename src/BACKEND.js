@@ -23,7 +23,8 @@ export const shoppingItems = [
     {
         image: pic2,
         title: "Cana Cluj",
-        description: "Cana cu \"I love Cluj\" in editie limitata",
+        description: "Cana cu \"I love Cluj\" in editie limitata, disponibila doar la zilele" +
+            " orasului",
         price: 10
     },
     {

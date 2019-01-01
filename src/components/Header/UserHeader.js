@@ -21,38 +21,43 @@ const styles = theme => ({
 class UserHeader extends Component {
 
     state = {
-        open: false,
+        showUserMenu: false,
         anchorEl: null,
     };
 
     handleClickAway = () => {
-        setTimeout(function () { //Start the timer
-            this.setState({open: false}) //After 1 second, set render to true
-        }.bind(this), 1000)
+        setTimeout(function () {
+            this.setState({showUserMenu: false}) //After 2 seconds, set
+            // render to true
+        }.bind(this), 2000)
     };
 
     handleClick = (event) => {
         this.setState({
-            open: true,
+            showUserMenu: true,
             anchorEl: event.currentTarget
         });
     };
 
+
     render() {
 
         const {classes} = this.props;
-        const {open} = this.state;
         let shoppingButton = null;
         let searchButton = null;
         if (this.props.buying) {
             shoppingButton = <Button className={classes.firstButton} variant={'outlined'}
-                                     onClick={() => this.props.history.push('/')}>Shopping
+                                     onClick={this.props.handleShoppingCart}>Shopping
                 Cart</Button>;
         }
         if (this.props.searching) {
             searchButton = <Button className={classes.firstButton} variant={'outlined'}
                                    onClick={this.props.handleSearch}>Search</Button>
         }
+
+        let userMenu = this.state.showUserMenu ? (
+            <UserMenu anchorEl={this.state.anchorEl}/>) : null;
+
         return (
             <div>
                 <ClickAwayListener onClickAway={this.handleClickAway}>
@@ -65,10 +70,10 @@ class UserHeader extends Component {
                         <AccountCircle/>
                     </IconButton>
 
-                    {open ? (<UserMenu anchorEl={this.state.anchorEl}/>) : null}
                     50 Cluj coins
                     {shoppingButton}
                     {searchButton}
+                    {userMenu}
                     <Button className={classes.secondButton} variant={'contained'}
                             onClick={() => this.props.history.push('/')}>Logout</Button>
                 </ClickAwayListener>
