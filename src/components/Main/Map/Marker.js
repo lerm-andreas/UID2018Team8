@@ -7,6 +7,9 @@ const styles = theme => ({
     fab: {
         margin: theme.spacing.unit,
     },
+    icon: {
+        color: "#FB8C00"
+    },
     extendedIcon: {
         marginRight: theme.spacing.unit,
     },
@@ -19,7 +22,7 @@ const Marker = (props) => {
 
     return (
         <IconButton aria-label="Delete" className={classes.fab}>
-            <Icon>place</Icon>
+            <Icon className={classes.icon}>place</Icon>
         </IconButton>
     )
 };

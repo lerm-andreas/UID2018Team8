@@ -5,7 +5,7 @@ import ShopList from "./ShopList/ShopList";
 export const ShopPage = () => {
     return (
         <div className="shopPage">
-            <UserHeader/>
+            <UserHeader  buying={true} searching={false}/>
             <ShopList/>
         </div>
     )
