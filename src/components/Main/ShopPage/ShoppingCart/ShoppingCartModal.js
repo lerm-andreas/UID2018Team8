@@ -21,7 +21,7 @@ const SimpleModal = (props) => {
             <Modal
                 open={props.open}
                 onClose={props.onClose}>
-                <ShoppingCart/>
+                <ShoppingCart itemsToBuy={props.itemsToBuy}/>
             </Modal>
         </div>
     );

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import UserHeader from "../../Header/UserHeader";
 import ShopList from "./ShopList/ShopList";
-import MyModal from "./ShoppingCart/ShoppingCartModal";
+import ShoppingCartModal from "./ShoppingCart/ShoppingCartModal";
 
 export class ShopPage extends Component {
 
@@ -16,9 +16,9 @@ export class ShopPage extends Component {
         this.closeModal = this.closeModal.bind(this);
     }
 
-    addToShoppingCart = (index) => {
-        this.state.itemsToBuy.push(index);
-        alert('Added index ' + index + ' to cart');
+    addToShoppingCart = (itemIndexPair) => {
+        this.state.itemsToBuy.push(itemIndexPair);
+        alert('Added index ' + itemIndexPair.index + ' to cart');
     };
 
     handleShoppingCart = () => {
@@ -37,7 +37,8 @@ export class ShopPage extends Component {
                 <UserHeader buying={true} searching={false}
                             handleShoppingCart={this.handleShoppingCart}/>
                 <ShopList addToShoppingCart={this.addToShoppingCart}/>
-                <MyModal open={this.state.showShoppingCart} onClose={this.closeModal}/>
+                <ShoppingCartModal open={this.state.showShoppingCart} onClose={this.closeModal}
+                                   itemsToBuy={this.state.itemsToBuy}/>
             </div>
         )
     }

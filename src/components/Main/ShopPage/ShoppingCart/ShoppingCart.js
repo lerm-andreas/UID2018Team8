@@ -2,61 +2,68 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
+import ShoppingCartItem from "./ShoppingCartItem";
+import {shoppingItems} from "../../../../BACKEND";
+import EmptyShoppingCartItem from "./EmptyShoppingCartItem";
 
 const styles = theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
         display: 'inline-block',
         position: 'fixed',
-        top: 0,
         bottom: 0,
         left: 0,
-        right: 0,
-        margin: 'auto',
+        margin: '20% 36%',
         width: '30%',
-        height: '30%'
     },
 });
 
-function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-}
 
-function SimpleList(props) {
-    const {classes} = props;
-    return (
-        <div className={classes.root}>
-            <List component="nav">
-                <ListItem button>
-                    <ListItemIcon>
-                        <InboxIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Inbox"/>
-                </ListItem>
-                <ListItem>
-                    <ListItemIcon>
-                        <DraftsIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Drafts"/>
-                </ListItem>
-            </List>
-            <Divider/>
-            <List component="nav">
-                <ListItem button>
-                    <ListItemText primary="Trash"/>
-                </ListItem>
-                <ListItemLink href="#simple-list">
-                    <ListItemText primary="Spam"/>
-                </ListItemLink>
-            </List>
-        </div>
-    );
+class SimpleList extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.getDisplayContents = this.getDisplayContents.bind(this);
+        this.getItemCounts = this.getItemCounts.bind(this)
+    }
+
+    getDisplayContents() {
+        if (this.props.itemsToBuy.length === 0)
+            return <EmptyShoppingCartItem title={"No items in the cart"}/>;
+        else {
+            let itemCounts = this.getItemCounts(this.props.itemsToBuy);
+            return (Object.keys(itemCounts).map(index => (
+                    <ShoppingCartItem title={shoppingItems[index].title}
+                                      price={itemCounts[index] * shoppingItems[index].price}/>
+                ))
+            )
+        }
+    }
+
+
+    getItemCounts(itemsToBuy) {
+        let counts = {};
+        itemsToBuy.forEach((itemIndexPair) => {
+            counts[itemIndexPair.index] = counts[itemIndexPair.index] ? counts[itemIndexPair.index] + 1 : 1;
+        });
+        return counts
+    }
+
+
+    render() {
+        const {classes} = this.props;
+        let displayContents = this.getDisplayContents();
+
+        return (
+            <div className={classes.root}>
+                <List component="nav">
+                    {displayContents}
+                </List>
+            </div>
+        );
+    }
+
+
 }
 
 SimpleList.propTypes = {
