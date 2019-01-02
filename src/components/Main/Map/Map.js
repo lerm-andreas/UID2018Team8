@@ -7,15 +7,38 @@ import {Markers} from "../../../BACKEND";
 
 class Map extends Component {
 
-    state = {
-        center: {
-            lat: 46.77,
-            lng: 23.59
-        },
-        zoom: 11,
-        markers: Markers
+    constructor(props) {
+        super(props);
+        this.state = {
+            center: {
+                lat: 46.77,
+                lng: 23.59
+            },
+            zoom: 11,
+            markers: Markers
+        };
+        this.addVote = this.addVote.bind(this);
+        this.handleSendFeedback = this.handleSendFeedback.bind(this);
+    }
+
+    addVote = (index) => {
+        let currMarkers = this.state.markers;
+        if (!currMarkers[index].beenVoted)
+            currMarkers[index].votes += 1;
+
+        else
+            currMarkers[index].votes -= 1;
+        currMarkers[index].beenVoted = !currMarkers[index].beenVoted;
+
+        this.setState({markers: currMarkers})
     };
 
+    handleSendFeedback = (index, comment) => {
+        let currMarkers = this.state.markers;
+        currMarkers[index].comments.push(comment);
+        this.setState({markers: currMarkers});
+        alert('Added comment ' + comment + 'for index :' + index)
+    };
 
     render() {
         let h = '100vh';
@@ -24,8 +47,10 @@ class Map extends Component {
             w = '70%';
         }
 
-        let markers = this.state.markers.map(marker => (
-            <Marker lat={marker.lat} lng={marker.lng}/>
+        let markers = this.state.markers.map((marker, index) => (
+            <Marker lat={marker.lat} lng={marker.lng} marker={marker}
+                    addVote={() => this.addVote(index)}
+                    handleSendFeedback={(comment) => this.handleSendFeedback(index, comment)}/>
         ));
 
         return (

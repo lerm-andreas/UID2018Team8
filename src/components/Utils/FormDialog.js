@@ -9,40 +9,60 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import Icon from "@material-ui/core/Icon/Icon";
 
-export const FormDialog = (props) => {
+export class FormDialog extends React.Component {
 
-    return (
-        <div>
-            <Dialog
-                open={props.open}
-                onClose={props.onClose}
-                aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        {props.description}
-                    </DialogContentText>
-                    <TextField multiline={true}
-                               autoFocus
-                               margin="dense"
-                               id="name"
-                               label="Comment"
-                               type="text"
-                               fullWidth/>
-                </DialogContent>
-                <DialogActions>
-                    <IconButton onClick={props.addUpvote} disabled={props.disableUpvote}>
-                        <Icon>thumb_up</Icon>
-                    </IconButton>
-                    <IconButton onClick={props.addDownvote} disabled={props.disableDownvote}>
-                        <Icon>thumb_down</Icon>
-                    </IconButton>
-                    <Button onClick={props.handleSendFeedback} color="primary" autoFocus>
-                        Send feedback
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
-    );
 
-};
+    constructor(props) {
+        super(props);
+        this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
+        this.state = {
+            textFieldValue: ''
+        }
+    }
+
+    handleTextFieldChange = (e) => {
+        this.setState({
+            textFieldValue: e.target.value
+        });
+    };
+
+    render() {
+        return (
+            <div>
+                <Dialog
+                    open={this.props.open}
+                    onClose={this.props.onClose}
+                    aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">{this.props.title}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            {this.props.description}
+                        </DialogContentText>
+                        <TextField multiline={true}
+                                   autoFocus
+                                   required={true}
+                                   margin="normal"
+                                   id="name"
+                                   label="Comment"
+                                   type="text"
+                                   fullWidth
+                                   onChange={this.handleTextFieldChange}/>
+                        {"Votes " + this.props.nrVotes}
+                    </DialogContent>
+                    <DialogActions>
+                        <IconButton onClick={this.props.addVote}>
+                            <Icon>thumb_up</Icon>
+                        </IconButton>
+                        <Button
+                            disabled={this.state.textFieldValue.length === 0}
+                            onClick={() => this.props.handleSendFeedback(this.state.textFieldValue)}
+                            color="primary"
+                            autoFocus>
+                            Send feedback
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
+        );
+    }
+}

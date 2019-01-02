@@ -34,8 +34,8 @@ export const Markers = [
         lat: 46.77,
         lng: 23.59,
         category: Categories.inProgress,
-        upvotes: 0,
-        downvotes: 0,
+        votes: 0,
+        beenVoted: false,
         comments: ["Good ideea"]
     }
 ];

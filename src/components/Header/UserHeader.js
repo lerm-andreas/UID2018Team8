@@ -7,6 +7,7 @@ import UserMenu from "../Main/UserMenu/UserMenu";
 import {withRouter} from "react-router-dom";
 import {withStyles} from '@material-ui/core/styles';
 import Icon from "@material-ui/core/Icon/Icon";
+import {homePageUrl} from "../../BACKEND";
 
 
 const styles = theme => ({
@@ -62,7 +63,7 @@ class UserHeader extends Component {
             <div>
                 <ClickAwayListener onClickAway={this.handleClickAway}>
 
-                    <IconButton onClick={() => this.props.history.push('/home')}>
+                    <IconButton onClick={() => this.props.history.push(homePageUrl)}>
                         <Icon>home</Icon>
                     </IconButton>
 
