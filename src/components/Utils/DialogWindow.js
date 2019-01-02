@@ -24,11 +24,11 @@ const AlertDialog = (props) => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={props.onAgree} color="primary">
-                        {props.agreeText}
+                    <Button onClick={props.onOption1} color="primary">
+                        {props.option1}
                     </Button>
-                    <Button onClick={props.onDisagree} color="primary" autoFocus>
-                        {props.disagreeText}
+                    <Button onClick={props.onOption2} color="primary" autoFocus>
+                        {props.option2}
                     </Button>
                 </DialogActions>
             </Dialog>

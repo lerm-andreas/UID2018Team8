@@ -3,24 +3,18 @@ import GoogleMapReact from 'google-map-react';
 import SearchComponent from "./SearchComponent";
 import './SearchComponent.css'
 import Marker from "./Marker";
+import {Markers} from "../../../BACKEND";
 
 class Map extends Component {
-    static defaultProps = {};
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            position: {
-                lat: 46.77,
-                lng: 23.59
-            },
-            center: {
-                lat: 46.77,
-                lng: 23.59
-            },
-            zoom: 11,
-        }
-    }
+    state = {
+        center: {
+            lat: 46.77,
+            lng: 23.59
+        },
+        zoom: 11,
+        markers: Markers
+    };
 
 
     render() {
@@ -29,16 +23,19 @@ class Map extends Component {
         if (this.props.searchOpen) {
             w = '70%';
         }
+
+        let markers = this.state.markers.map(marker => (
+            <Marker lat={marker.lat} lng={marker.lng}/>
+        ));
+
         return (
             <div className={'test'}>
                 <div className={'testLine'} style={{height: h, width: w}}>
                     <GoogleMapReact
                         apiKey={"AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats"}
                         defaultCenter={this.state.center}
-                        defaultZoom={this.state.zoom}
-
-                    >
-                        <Marker {...this.state.position} text={'A'}/>
+                        defaultZoom={this.state.zoom}>
+                        {markers}
                     </GoogleMapReact>
                 </div>
                 {this.props.searchOpen &&

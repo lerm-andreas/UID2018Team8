@@ -5,21 +5,40 @@ import pic4 from './images/electric-castle-alb.jpg'
 import pic5 from './images/pony_car.jpg'
 import pic6 from './images/tricout-Cluj-Napoca.jpg'
 
-
 export const accounts = {
     adminAccount: {
         username: 'admin',
         password: 'password',
-        token: 'admin'
+        role: 'admin'
     },
     userAccount: {
         username: 'user',
         password: 'password',
-        token: 'user',
+        role: 'user',
         coins: 100
     }
 
 };
+
+
+export const Categories = {
+    inProgress: 'In Progress',
+    approved: 'Approved',
+    denied: 'Denied',
+    completed: 'Completed'
+};
+
+
+export const Markers = [
+    {
+        lat: 46.77,
+        lng: 23.59,
+        category: Categories.inProgress,
+        upvotes: 0,
+        downvotes: 0,
+        comments: ["Good ideea"]
+    }
+];
 
 export const shoppingPageUrl = '/shoppingPage';
 export const homePageUrl = "/home";

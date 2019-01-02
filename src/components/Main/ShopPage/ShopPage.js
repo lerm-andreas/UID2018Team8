@@ -67,10 +67,10 @@ export class ShopPage extends Component {
                           description={"Are you sure you would like to make the purchase?" +
                           " A sum of " + this.state.total + " Cluj coins will be deducted" +
                           " from your account"}
-                          agreeText={"YES"}
-                          disagreeText={"NO"}
-                          onAgree={() => this.handleFinalBuyRequest(this.state.total)}
-                          onDisagree={this.closeDialogWindow}/> :
+                          option1={"YES"}
+                          option2={"NO"}
+                          onOption1={() => this.handleFinalBuyRequest(this.state.total)}
+                          onOption2={this.closeDialogWindow}/> :
             <DialogWindow open={this.state.showDialogWindow} onClose={this.closeDialogWindow}
                           title={"Making a purchase failed"}
                           description={"You don't have enough Cluj coins to make this purchase." +
