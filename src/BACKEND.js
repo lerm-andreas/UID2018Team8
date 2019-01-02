@@ -6,9 +6,20 @@ import pic5 from './images/pony_car.jpg'
 import pic6 from './images/tricout-Cluj-Napoca.jpg'
 
 
-export const admin = 'admin';
-export const password = 'password';
+export const accounts = {
+    adminAccount: {
+        username: 'admin',
+        password: 'password',
+        token: 'admin'
+    },
+    userAccount: {
+        username: 'user',
+        password: 'password',
+        token: 'user',
+        coins: 100
+    }
 
+};
 
 export const shoppingPageUrl = '/shoppingPage';
 export const homePageUrl = "/home";

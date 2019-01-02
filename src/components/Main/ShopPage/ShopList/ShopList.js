@@ -27,10 +27,10 @@ class ShopList extends React.Component {
         return (
             <Grid container className={classes.container} spacing={24}>
                 {shoppingItems.map((value, index) => (
-                    <Grid key={value} item xs={4} className={classes.item}>
+                    <Grid key={index} item xs={4} className={classes.item}>
                         <ShopItem title={value.title} image={value.image}
                                   description={value.description} price={value.price}
-                                  addToShoppingCart={() => this.props.addToShoppingCart({
+                                  addItemToShoppingCart={() => this.props.addItemToShoppingCart({
                                       item: value,
                                       index: index
                                   })}/>

@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import LoginPage from "./LoginPage/LoginPage";
 import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
-import {homePageUrl, shoppingPageUrl} from "../../BACKEND";
+import {shoppingPageUrl} from "../../BACKEND";
 
 const Main = () => {
     return (

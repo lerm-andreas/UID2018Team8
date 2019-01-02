@@ -14,14 +14,12 @@ const styles = theme => ({
 });
 
 const SimpleModal = (props) => {
-
-
     return (
         <div>
             <Modal
                 open={props.open}
                 onClose={props.onClose}>
-                <ShoppingCart itemsToBuy={props.itemsToBuy}/>
+                <ShoppingCart itemsToBuy={props.itemsToBuy} handleBuyRequest={props.handleBuyRequest}/>
             </Modal>
         </div>
     );

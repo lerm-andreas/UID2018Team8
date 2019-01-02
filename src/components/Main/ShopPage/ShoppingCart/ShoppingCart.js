@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ShoppingCartItem from "./ShoppingCartItem";
+import ShoppingCartItem from "./ShoppingCartItems/ShoppingCartItem";
 import {shoppingItems} from "../../../../BACKEND";
-import EmptyShoppingCartItem from "./EmptyShoppingCartItem";
+import EmptyShoppingCartItem from "./ShoppingCartItems/EmptyShoppingCartItem";
+import Divider from "@material-ui/core/Divider/Divider";
 
 const styles = theme => ({
     root: {
@@ -23,23 +24,30 @@ class SimpleList extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            itemCounts: this.getItemCounts(this.props.itemsToBuy)
+        };
         this.getDisplayContents = this.getDisplayContents.bind(this);
-        this.getItemCounts = this.getItemCounts.bind(this)
+        this.getItemCounts = this.getItemCounts.bind(this);
     }
 
     getDisplayContents() {
         if (this.props.itemsToBuy.length === 0)
             return <EmptyShoppingCartItem title={"No items in the cart"}/>;
         else {
-            let itemCounts = this.getItemCounts(this.props.itemsToBuy);
-            return (Object.keys(itemCounts).map(index => (
-                    <ShoppingCartItem title={shoppingItems[index].title}
-                                      price={itemCounts[index] * shoppingItems[index].price}/>
-                ))
-            )
+            let shoppingItemsToDisplay = Object.keys(this.state.itemCounts).map(index => (
+                <ShoppingCartItem title={shoppingItems[index].title}
+                                  price={`${this.state.itemCounts[index]} Units * ${shoppingItems[index].price} Cluj coins`}/>
+            ));
+            shoppingItemsToDisplay.push(<Divider/>);
+            const totalCost = this.getTotalCost();
+            shoppingItemsToDisplay.push(<EmptyShoppingCartItem
+                title={`Total sum: ${totalCost} Cluj coins`}
+                showCheckout={true}
+                sendBuyRequest={() => this.props.handleBuyRequest(totalCost)}/>);
+            return shoppingItemsToDisplay;
         }
     }
-
 
     getItemCounts(itemsToBuy) {
         let counts = {};
@@ -49,6 +57,14 @@ class SimpleList extends React.Component {
         return counts
     }
 
+
+    getTotalCost() {
+        let sum = 0;
+        Object.keys(this.state.itemCounts).forEach(index => (
+            sum += this.state.itemCounts[index] * shoppingItems[index].price
+        ));
+        return sum
+    }
 
     render() {
         const {classes} = this.props;
@@ -62,8 +78,6 @@ class SimpleList extends React.Component {
             </div>
         );
     }
-
-
 }
 
 SimpleList.propTypes = {

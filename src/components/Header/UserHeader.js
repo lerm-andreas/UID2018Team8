@@ -69,8 +69,7 @@ class UserHeader extends Component {
                     <IconButton onClick={this.handleClick}>
                         <AccountCircle/>
                     </IconButton>
-
-                    50 Cluj coins
+                    {localStorage.getItem('coins') + ' Cluj Coins'}
                     {shoppingButton}
                     {searchButton}
                     {userMenu}

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button"
 import LoginHeader from "../../Header/LoginHeader";
-import {admin, password} from "../../../BACKEND";
+import {accounts} from "../../../BACKEND";
 
 class LoginPage extends Component {
     constructor(props) {
@@ -24,10 +24,11 @@ class LoginPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (this.state.username === admin && this.state.password === password) {
+        if (this.state.username === accounts.userAccount.username && this.state.password === accounts.userAccount.password) {
             this.props.history.push('/home');
+            localStorage.setItem('coins', accounts.userAccount.coins);
         } else {
-            // display some wrong input error
+            //TODO display some wrong input error
         }
 
     };
@@ -42,7 +43,7 @@ class LoginPage extends Component {
                     <TextField name={'password'} label={'Password'} type={'password'}
                                required={true}
                                onChange={this.handleChange}/><br/>
-                    <Button type={'submit'} variant={'condensed'}>Submit</Button>
+                    <Button type={'submit'} variant='condensed'>Submit</Button>
                 </form>
             </div>
         )

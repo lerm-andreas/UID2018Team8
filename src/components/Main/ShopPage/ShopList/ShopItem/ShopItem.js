@@ -53,7 +53,7 @@ function ShopItem(props) {
                 <Button className={classes.button}
                         size="small" color="primary"
                         variant='contained'
-                        onClick={props.addToShoppingCart}>
+                        onClick={props.addItemToShoppingCart}>
                     Add to basket
                 </Button>
             </CardActions>
