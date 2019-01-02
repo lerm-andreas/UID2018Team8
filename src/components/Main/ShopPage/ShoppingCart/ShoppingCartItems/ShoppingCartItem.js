@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 
 const styles = theme => ({});
 
-
 const ShopItem = (props) => {
     let descr = `${props.quantity} Units * ${props.price} Cluj coins`;
     return (<ListItem>
