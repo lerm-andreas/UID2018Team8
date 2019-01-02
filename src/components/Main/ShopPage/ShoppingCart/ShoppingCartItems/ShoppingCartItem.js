@@ -9,12 +9,13 @@ const styles = theme => ({});
 
 
 const ShopItem = (props) => {
+    let descr = `${props.quantity} Units * ${props.price} Cluj coins`;
     return (<ListItem>
-            <ListItemText primary={props.title} secondary={props.price}/>
-            <IconButton>
+            <ListItemText primary={props.title} secondary={descr}/>
+            <IconButton onClick={props.decreaseItemCount} disabled={props.quantity === 0}>
                 <Icon>remove_circle_outline</Icon>
             </IconButton>
-            <IconButton>
+            <IconButton onClick={props.increaseItemCount}>
                 <Icon> add_circle_outline</Icon>
             </IconButton>
         </ListItem>

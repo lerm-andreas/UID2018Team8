@@ -27,18 +27,22 @@ export class ShopPage extends Component {
     };
 
     handleBuyRequest = (total) => {
+        if (total < localStorage.getItem('coins'))
+            this.setState({successful: true});
+        else
+            this.setState({successful: false});
         this.setState({total: total, showDialogWindow: true})
     };
 
     handleFinalBuyRequest() {
         let myCoins = localStorage.getItem('coins');
-        if (this.state.total <= myCoins) {
+        if (this.state.successful) {
             localStorage.setItem('coins', myCoins - this.state.total);
             this.setState({itemsToBuy: [], showShoppingCart: false, showDialogWindow: false})
         }
-        else
-            alert('Not enough coins for the purchase');
+
     }
+
 
     handleShoppingCart = () => {
         this.setState(prevState => ({
@@ -56,6 +60,23 @@ export class ShopPage extends Component {
     };
 
     render() {
+
+        let dialogWindow = this.state.successful ?
+            <DialogWindow open={this.state.showDialogWindow} onClose={this.closeDialogWindow}
+                          title={"Making a purchase"}
+                          description={"Are you sure you would like to make the purchase?" +
+                          " A sum of " + this.state.total + " Cluj coins will be deducted" +
+                          " from your account"}
+                          agreeText={"YES"}
+                          disagreeText={"NO"}
+                          onAgree={() => this.handleFinalBuyRequest(this.state.total)}
+                          onDisagree={this.closeDialogWindow}/> :
+            <DialogWindow open={this.state.showDialogWindow} onClose={this.closeDialogWindow}
+                          title={"Making a purchase failed"}
+                          description={"You don't have enough Cluj coins to make this purchase." +
+                          " Try contributing more to the community and try again :)"}
+            />;
+
         return (
             <div className="shopPage">
                 <UserHeader buying={true} searching={false}
@@ -64,12 +85,7 @@ export class ShopPage extends Component {
                 <ShoppingCartModal open={this.state.showShoppingCart} onClose={this.closeModal}
                                    itemsToBuy={this.state.itemsToBuy}
                                    handleBuyRequest={this.handleBuyRequest}/>
-                <DialogWindow open={this.state.showDialogWindow} onClose={this.closeDialogWindow}
-                              title={"Are you sure you would like to make the purchase?"}
-                              agreeText={"YES"}
-                              disagreeText={"NO"}
-                              onAgree={() => this.handleFinalBuyRequest(this.state.total)}
-                              onDisagree={this.closeDialogWindow}/>
+                {dialogWindow}
             </div>
         )
     }

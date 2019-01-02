@@ -29,6 +29,8 @@ class SimpleList extends React.Component {
         };
         this.getDisplayContents = this.getDisplayContents.bind(this);
         this.getItemCounts = this.getItemCounts.bind(this);
+        this.increaseItemCount = this.increaseItemCount.bind(this);
+        this.decreaseItemCount = this.decreaseItemCount.bind(this);
     }
 
     getDisplayContents() {
@@ -37,7 +39,10 @@ class SimpleList extends React.Component {
         else {
             let shoppingItemsToDisplay = Object.keys(this.state.itemCounts).map(index => (
                 <ShoppingCartItem title={shoppingItems[index].title}
-                                  price={`${this.state.itemCounts[index]} Units * ${shoppingItems[index].price} Cluj coins`}/>
+                                  price={shoppingItems[index].price}
+                                  quantity={this.state.itemCounts[index]}
+                                  increaseItemCount={() => this.increaseItemCount(index)}
+                                  decreaseItemCount={() => this.decreaseItemCount(index)}/>
             ));
             shoppingItemsToDisplay.push(<Divider/>);
             const totalCost = this.getTotalCost();
@@ -57,6 +62,17 @@ class SimpleList extends React.Component {
         return counts
     }
 
+    increaseItemCount = (index) => {
+        let currCounts = this.state.itemCounts;
+        currCounts[index] += 1;
+        this.setState({itemCounts: currCounts});
+    };
+
+    decreaseItemCount = (index) => {
+        let currCounts = this.state.itemCounts;
+        currCounts[index] -= 1;
+        this.setState({itemCounts: currCounts});
+    };
 
     getTotalCost() {
         let sum = 0;
