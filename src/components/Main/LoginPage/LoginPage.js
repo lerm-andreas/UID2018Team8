@@ -29,7 +29,7 @@ class LoginPage extends Component {
             localStorage.setItem('coins', accounts.userAccount.coins);
             localStorage.setItem('role', accounts.userAccount.role);
             const markers = Markers;
-            localStorage.setObject('markers', markers[0])
+           // localStorage.setObject('markers', markers[0])
         } else {
             //TODO display some wrong input error
         }

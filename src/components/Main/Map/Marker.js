@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import Icon from "@material-ui/core/Icon/Icon";
 import DialogWindow from "../../Utils/DialogWindow";
 import {FormDialog} from "../../Utils/FormDialog";
+import ShareButton from "../../Utils/ShareButton"; 
 
 const styles = theme => ({
     fab: {
@@ -25,13 +26,14 @@ class Marker extends React.Component {
         this.state = {
             showInitialDialog: false,
             userRole: localStorage.getItem('role'),
-            showFeedbackDialog: false
+            showFeedbackDialog: false,
+            showSharePost:false
         };
         this.handleDialogOpen = this.handleDialogOpen.bind(this);
         this.handleDialogClose = this.handleDialogClose.bind(this);
         this.handleFeedbackDialog = this.handleFeedbackDialog.bind(this);
         this.handleFeedbackDialogClose = this.handleFeedbackDialogClose.bind(this);
-
+        this.handleSharePost = this.handleSharePost.bind(this);
     }
 
     handleDialogOpen = () => {
@@ -50,6 +52,14 @@ class Marker extends React.Component {
         this.setState({showFeedbackDialog: false});
     };
 
+    handleSharePost = () => {
+        this.setState({showSharePost: true});
+    };
+
+    handleSharePostClose = () =>{
+        this.setState({showSharePost: false});
+    };
+
     render() {
         const {classes} = this.props;
 
@@ -62,9 +72,9 @@ class Marker extends React.Component {
                 <DialogWindow open={this.state.showInitialDialog} onClose={this.handleDialogClose}
                               title={"Do you want to add feedback or share this problem on Facebook?"}
                               option1={"Add feedback"}
-                              option2={"Share on Facebook"}
+                              option2 = {<ShareButton/>}
                               onOption1={this.handleFeedbackDialog}
-                              onOption2={() => alert('Action 2 picked')}/>
+                />
                 <FormDialog open={this.state.showFeedbackDialog}
                             onClose={this.handleFeedbackDialogClose}
                             title={"Adding feedback"}
