@@ -6,6 +6,7 @@ import DialogWindow from "../../Utils/DialogWindow";
 import {FormDialog} from "../../Utils/FormDialog";
 import ShareButton from "../../Utils/ShareButton";
 import {IssueDialog} from "../../Utils/IssueDialog";
+import {getKeyByValue, Status, StatusToColor} from "../../../BACKEND";
 
 const styles = theme => ({
     fab: {
@@ -14,6 +15,15 @@ const styles = theme => ({
     extendedIcon: {
         marginRight: theme.spacing.unit,
     },
+    button: {
+        padding: '15px 10px',
+        display: 'inline-flex',
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: '100%',
+        transform: 'translate(-50%, -50%)'
+    }
 });
 
 
@@ -71,7 +81,7 @@ class Marker extends React.Component {
         const {classes} = this.props;
         let dialogWindow = null;
         let issue = this.props.marker;
-        let dialogProps = {};
+        // let dialogProps = {};
         if (this.state.role === "user") {
             let description = <>
                 {"Status: " + this.props.marker.status}
@@ -106,9 +116,10 @@ class Marker extends React.Component {
 
         return (
             <>
-                <IconButton aria-label="Delete" className={classes.fab}
+                <IconButton aria-label="Delete" className={classes.button}
                             onClick={this.handleDialogOpen}>
-                    <Icon style={{color: "green"}}>place</Icon>
+                    <Icon
+                        style={{color: StatusToColor[getKeyByValue(Status, this.props.marker.status)]}}>place</Icon>
                 </IconButton>
                 {dialogWindow}
                 <FormDialog open={this.state.showFeedbackDialog}

@@ -5,6 +5,11 @@ import pic4 from './images/electric-castle-alb.jpg'
 import pic5 from './images/pony_car.jpg'
 import pic6 from './images/tricout-Cluj-Napoca.jpg'
 
+
+export function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
 export const accounts = {
     adminAccount: {
         username: 'admin',
@@ -24,7 +29,6 @@ export const accounts = {
 export const Status = {
     inProgress: 'In Progress',
     approved: 'Approved',
-    denied: 'Denied',
     completed: 'Completed'
 };
 
@@ -35,12 +39,17 @@ export const Categories = {
     //TODO add more categories maybe???
 };
 
+export const StatusToColor = {
+    inProgress: "#0F2150",
+    approved: "#2081f9",
+    completed: "#959595"
+};
 
 export const Markers = [
     {
         nr: 1,
-        lat: 46.77,
-        lng: 23.59,
+        lat: 46.770,
+        lng: 23.590,
         category: Categories.thrash,
         status: Status.inProgress,
         votes: 0,
@@ -49,6 +58,30 @@ export const Markers = [
         adminComments: ["Please be more precise" +
         ""],
         description: "Problema la gunoi"
+    },
+    {
+        nr: 2,
+        lat: 46.771,
+        lng: 23.590,
+        category: Categories.parking,
+        status: Status.completed,
+        votes: 0,
+        beenVoted: false,
+        userComments: ["Good ideea"],
+        adminComments: ["Done!!"],
+        description: "Cineva a parcat in fata locului meu si nu pot iesi"
+    },
+    {
+        nr: 3,
+        lat: 46.770,
+        lng: 23.589,
+        category: Categories.socialAssistance,
+        status: Status.approved,
+        votes: 2,
+        beenVoted: false,
+        userComments: ["Good ideea"],
+        adminComments: ["Somebody will take care of it in one-two days"],
+        description: "Un grup de oameni fara adapost s-au stabilit sub pod"
     }
 ];
 

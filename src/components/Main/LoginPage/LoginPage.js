@@ -50,7 +50,7 @@ class LoginPage extends Component {
                     <TextField name={'password'} label={'Password'} type={'password'}
                                required={true}
                                onChange={this.handleChange}/><br/>
-                    <Button type={'submit'} variant='condensed'>Submit</Button>
+                    <Button type={'submit'} variant='contained'>Submit</Button>
                 </form>
             </div>
         )

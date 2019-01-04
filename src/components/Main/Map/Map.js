@@ -14,7 +14,7 @@ class Map extends Component {
                 lat: 46.77,
                 lng: 23.59
             },
-            zoom: 11,
+            zoom: 15,
             markers: Markers,
             role: localStorage.getItem('role')
         };
@@ -69,9 +69,14 @@ class Map extends Component {
             <div className={'test'}>
                 <div className={'testLine'} style={{height: h, width: w}}>
                     <GoogleMapReact
-                        apiKey={"AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats"}
+                        bootstrapURLKeys={{
+                            key: 'AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats',
+                            v: '3.31'
+                        }}
+                        // apiKey={"AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats"}
                         defaultCenter={this.state.center}
-                        defaultZoom={this.state.zoom}>
+                        defaultZoom={this.state.zoom}
+                        v={'3.31'}>
                         {markers}
                     </GoogleMapReact>
                 </div>
