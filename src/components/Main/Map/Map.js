@@ -16,7 +16,8 @@ class Map extends Component {
             },
             zoom: 15,
             markers: Markers,
-            role: localStorage.getItem('role')
+            role: localStorage.getItem('role'),
+            showDialog: true
         };
         this.addVote = this.addVote.bind(this);
         this.handleSendComment = this.handleSendComment.bind(this);
@@ -38,8 +39,7 @@ class Map extends Component {
     handleSendComment = (index, comment) => {
         let currMarkers = this.state.markers;
         currMarkers[index].userComments.push(comment);
-        this.setState({markers: currMarkers});
-        alert('Added comment ' + comment + 'for index :' + index)
+        this.setState({markers: currMarkers, showDialog: false});
     };
 
     handleAdminChanges = (index, changes) => {
@@ -47,8 +47,7 @@ class Map extends Component {
         Object.keys(changes).forEach((key) => (
             currMarkers[index][key] = changes[key]
         ));
-        this.setState({markers: currMarkers});
-        alert('Admin changes ' + currMarkers[index] + 'for index :' + index)
+        this.setState({markers: currMarkers, showDialog: false});
     };
 
     render() {
@@ -62,7 +61,8 @@ class Map extends Component {
             <Marker lat={marker.lat} lng={marker.lng} marker={marker}
                     addVote={() => this.addVote(index)}
                     handleSendComment={(comment) => this.handleSendComment(index, comment)}
-                    handleAdminChanges={(changes) => this.handleAdminChanges(index, changes)}/>
+                    handleAdminChanges={(changes) => this.handleAdminChanges(index, changes)}
+                    showDialog={this.state.showDialog}/>
         ));
 
         return (

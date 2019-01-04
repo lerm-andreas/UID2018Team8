@@ -80,7 +80,6 @@ export class IssueDialog extends React.Component {
                             <MenuItem value={Status.inProgress}>{Status.inProgress}</MenuItem>
                             <MenuItem value={Status.approved}>{Status.approved}</MenuItem>
                             <MenuItem value={Status.completed}>{Status.completed}</MenuItem>
-                            <MenuItem value={Status.denied}>{Status.denied}</MenuItem>
                         </Select>
                     </DialogContent>
                     <DialogActions>

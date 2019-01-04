@@ -34,15 +34,21 @@ export const Status = {
 
 export const Categories = {
     socialAssistance: 'social assistance',
-    thrash: 'thrash',
+    trash: 'trash',
     parking: 'parking',
     //TODO add more categories maybe???
 };
 
 export const StatusToColor = {
-    inProgress: "#0F2150",
-    approved: "#2081f9",
-    completed: "#959595"
+    inProgress: "#1A237E",
+    approved: "#5C6BC0",
+    completed: "#9FA8DA"
+};
+
+export const CategoryToIcon = {
+    socialAssistance: "people",
+    parking: "local_parking",
+    trash: "restore_from_trash"
 };
 
 export const Markers = [
@@ -50,7 +56,7 @@ export const Markers = [
         nr: 1,
         lat: 46.770,
         lng: 23.590,
-        category: Categories.thrash,
+        category: Categories.trash,
         status: Status.inProgress,
         votes: 0,
         beenVoted: false,

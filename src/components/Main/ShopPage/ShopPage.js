@@ -23,7 +23,6 @@ export class ShopPage extends Component {
 
     addItemToShoppingCart = (itemIndexPair) => {
         this.state.itemsToBuy.push(itemIndexPair);
-        alert('Added index ' + itemIndexPair.index + ' to cart');
     };
 
     handleBuyRequest = (total) => {

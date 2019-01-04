@@ -6,7 +6,7 @@ import DialogWindow from "../../Utils/DialogWindow";
 import {FormDialog} from "../../Utils/FormDialog";
 import ShareButton from "../../Utils/ShareButton";
 import {IssueDialog} from "../../Utils/IssueDialog";
-import {getKeyByValue, Status, StatusToColor} from "../../../BACKEND";
+import {Categories, CategoryToIcon, getKeyByValue, Status, StatusToColor} from "../../../BACKEND";
 
 const styles = theme => ({
     fab: {
@@ -81,6 +81,7 @@ class Marker extends React.Component {
         const {classes} = this.props;
         let dialogWindow = null;
         let issue = this.props.marker;
+        let icon = CategoryToIcon[getKeyByValue(Categories, issue.category)];
         // let dialogProps = {};
         if (this.state.role === "user") {
             let description = <>
@@ -119,17 +120,17 @@ class Marker extends React.Component {
                 <IconButton aria-label="Delete" className={classes.button}
                             onClick={this.handleDialogOpen}>
                     <Icon
-                        style={{color: StatusToColor[getKeyByValue(Status, this.props.marker.status)]}}>place</Icon>
+                        style={{color: StatusToColor[getKeyByValue(Status, this.props.marker.status)]}}>{icon}</Icon>
                 </IconButton>
                 {dialogWindow}
-                <FormDialog open={this.state.showFeedbackDialog}
+                <FormDialog open={this.state.showFeedbackDialog && this.props.showDialog}
                             onClose={this.handleFeedbackDialogClose}
                             title={"Adding feedback"}
                             description={"Please add a relevant comment regarding the problem."}
                             nrVotes={this.props.marker.votes}
                             addVote={this.props.addVote}
                             handleSendComment={this.props.handleSendComment}/>
-                <IssueDialog open={this.state.showIssueDialog}
+                <IssueDialog open={this.state.showIssueDialog && this.props.showDialog}
                              onClose={this.handleIssueDialogClose}
                              issue={this.props.marker}
                              handleAdminChanges={this.props.handleAdminChanges}/>
