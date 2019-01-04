@@ -21,22 +21,34 @@ export const accounts = {
 };
 
 
-export const Categories = {
+export const Status = {
     inProgress: 'In Progress',
     approved: 'Approved',
     denied: 'Denied',
     completed: 'Completed'
 };
 
+export const Categories = {
+    socialAssistance: 'social assistance',
+    thrash: 'thrash',
+    parking: 'parking',
+    //TODO add more categories maybe???
+};
+
 
 export const Markers = [
     {
+        nr: 1,
         lat: 46.77,
         lng: 23.59,
-        category: Categories.inProgress,
+        category: Categories.thrash,
+        status: Status.inProgress,
         votes: 0,
         beenVoted: false,
-        comments: ["Good ideea"]
+        userComments: ["Good ideea"],
+        adminComments: ["Please be more precise" +
+        ""],
+        description: "Problema la gunoi"
     }
 ];
 

@@ -15,10 +15,12 @@ class Map extends Component {
                 lng: 23.59
             },
             zoom: 11,
-            markers: Markers
+            markers: Markers,
+            role: localStorage.getItem('role')
         };
         this.addVote = this.addVote.bind(this);
-        this.handleSendFeedback = this.handleSendFeedback.bind(this);
+        this.handleSendComment = this.handleSendComment.bind(this);
+        this.handleAdminChanges = this.handleAdminChanges.bind(this);
     }
 
     addVote = (index) => {
@@ -33,11 +35,20 @@ class Map extends Component {
         this.setState({markers: currMarkers})
     };
 
-    handleSendFeedback = (index, comment) => {
+    handleSendComment = (index, comment) => {
         let currMarkers = this.state.markers;
-        currMarkers[index].comments.push(comment);
+        currMarkers[index].userComments.push(comment);
         this.setState({markers: currMarkers});
         alert('Added comment ' + comment + 'for index :' + index)
+    };
+
+    handleAdminChanges = (index, changes) => {
+        let currMarkers = this.state.markers;
+        Object.keys(changes).forEach((key) => (
+            currMarkers[index][key] = changes[key]
+        ));
+        this.setState({markers: currMarkers});
+        alert('Admin changes ' + currMarkers[index] + 'for index :' + index)
     };
 
     render() {
@@ -50,7 +61,8 @@ class Map extends Component {
         let markers = this.state.markers.map((marker, index) => (
             <Marker lat={marker.lat} lng={marker.lng} marker={marker}
                     addVote={() => this.addVote(index)}
-                    handleSendFeedback={(comment) => this.handleSendFeedback(index, comment)}/>
+                    handleSendComment={(comment) => this.handleSendComment(index, comment)}
+                    handleAdminChanges={(changes) => this.handleAdminChanges(index, changes)}/>
         ));
 
         return (

@@ -6,17 +6,19 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import Icon from "@material-ui/core/Icon/Icon";
+import Select from "@material-ui/core/Select/Select";
+import MenuItem from "@material-ui/core/MenuItem/MenuItem";
+import {Status} from "../../BACKEND";
 
-export class FormDialog extends React.Component {
+export class IssueDialog extends React.Component {
 
 
     constructor(props) {
         super(props);
         this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
         this.state = {
-            textFieldValue: ''
+            textFieldValue: '',
+            statusValue: this.props.issue.status
         }
     }
 
@@ -26,18 +28,39 @@ export class FormDialog extends React.Component {
         });
     };
 
+    handleChange = (e) => {
+        this.setState({
+            statusValue: e.target.value
+        });
+    };
+
+    getChanges = () => {
+        return {status: this.state.statusValue, adminComments: this.state.textFieldValue}
+    };
+
+
     render() {
+
+        let issue = this.props.issue;
 
         return (
             <div>
                 <Dialog
+                    fullWidth={true}
                     open={this.props.open}
                     onClose={this.props.onClose}
                     aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">{this.props.title}</DialogTitle>
+                    <DialogTitle
+                        id="form-dialog-title">
+                        {"Issue nr: " + issue.nr + " Category: " + issue.category + " Nr votes: " + issue.votes}
+                        <br/>
+                        {"Status: " + issue.status}
+                    </DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            {this.props.description}
+                            {"User description:" + issue.description}
+                            <br/>
+                            {"User comments:" + issue.userComments}
                         </DialogContentText>
                         <TextField multiline={true}
                                    autoFocus
@@ -48,18 +71,25 @@ export class FormDialog extends React.Component {
                                    type="text"
                                    fullWidth
                                    onChange={this.handleTextFieldChange}/>
-                        {"Votes " + this.props.nrVotes}
+                        <Select
+                            value={issue.status}
+                            onChange={this.handleChange}
+                            inputProps={{
+                                name: 'new status'
+                            }}>
+                            <MenuItem value={Status.inProgress}>{Status.inProgress}</MenuItem>
+                            <MenuItem value={Status.approved}>{Status.approved}</MenuItem>
+                            <MenuItem value={Status.completed}>{Status.completed}</MenuItem>
+                            <MenuItem value={Status.denied}>{Status.denied}</MenuItem>
+                        </Select>
                     </DialogContent>
                     <DialogActions>
-                        <IconButton onClick={this.props.addVote}>
-                            <Icon variant="outlined">thumb_up</Icon>
-                        </IconButton>
                         <Button
                             disabled={this.state.textFieldValue.length === 0}
-                            onClick={() => this.props.handleSendComment(this.state.textFieldValue)}
+                            onClick={() => this.props.handleAdminChanges(this.getChanges())}
                             color="primary"
                             autoFocus>
-                            Send feedback
+                            Finish changes
                         </Button>
                     </DialogActions>
                 </Dialog>

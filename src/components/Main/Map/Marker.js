@@ -4,14 +4,12 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import Icon from "@material-ui/core/Icon/Icon";
 import DialogWindow from "../../Utils/DialogWindow";
 import {FormDialog} from "../../Utils/FormDialog";
-import ShareButton from "../../Utils/ShareButton"; 
+import ShareButton from "../../Utils/ShareButton";
+import {IssueDialog} from "../../Utils/IssueDialog";
 
 const styles = theme => ({
     fab: {
         margin: theme.spacing.unit,
-    },
-    icon: {
-        color: "#FB8C00"
     },
     extendedIcon: {
         marginRight: theme.spacing.unit,
@@ -25,9 +23,10 @@ class Marker extends React.Component {
         super(props);
         this.state = {
             showInitialDialog: false,
-            userRole: localStorage.getItem('role'),
+            role: localStorage.getItem('role'),
             showFeedbackDialog: false,
-            showSharePost:false
+            showSharePost: false,
+            showIssueDialog: false,
         };
         this.handleDialogOpen = this.handleDialogOpen.bind(this);
         this.handleDialogClose = this.handleDialogClose.bind(this);
@@ -56,32 +55,73 @@ class Marker extends React.Component {
         this.setState({showSharePost: true});
     };
 
-    handleSharePostClose = () =>{
+    handleSharePostClose = () => {
         this.setState({showSharePost: false});
+    };
+
+    handleIssueDialog = () => {
+        this.setState({showIssueDialog: true})
+    };
+
+    handleIssueDialogClose = () => {
+        this.setState({showIssueDialog: false})
     };
 
     render() {
         const {classes} = this.props;
+        let dialogWindow = null;
+        let issue = this.props.marker;
+        let dialogProps = {};
+        if (this.state.role === "user") {
+            let description = <>
+                {"Status: " + this.props.marker.status}
+                <br/>
+                {"User description: " + this.props.marker.description}
+                <br/>
+                {"Admin comment: " + this.props.marker.adminComments}
+            </>;
+            dialogWindow =
+                <DialogWindow
+                    open={this.state.showInitialDialog}
+                    onClose={this.handleDialogClose}
+                    title={"Do you want to add feedback or share this problem on Facebook?"}
+                    description={description}
+                    option1={"Add feedback"}
+                    option2={<ShareButton/>}
+                    onOption1={this.handleFeedbackDialog}/>
+        }
+
+        else {
+            dialogWindow =
+                <DialogWindow open={this.state.showInitialDialog}
+                              onClose={this.handleDialogClose}
+                              title={"Issue nr: " + issue.nr + " Category: " + issue.category + " Nr votes: " + issue.votes}
+                              description={"Do you want to change the status of the problem" +
+                              " or contact the authorities"}
+                              option1={"Change status"}
+                              option2={"Contact authorities"}
+                              onOption1={this.handleIssueDialog}
+                              onOption2={this.handleContactAuthorities}/>
+        }
 
         return (
             <>
                 <IconButton aria-label="Delete" className={classes.fab}
                             onClick={this.handleDialogOpen}>
-                    <Icon className={classes.icon}>place</Icon>
+                    <Icon style={{color: "green"}}>place</Icon>
                 </IconButton>
-                <DialogWindow open={this.state.showInitialDialog} onClose={this.handleDialogClose}
-                              title={"Do you want to add feedback or share this problem on Facebook?"}
-                              option1={"Add feedback"}
-                              option2 = {<ShareButton/>}
-                              onOption1={this.handleFeedbackDialog}
-                />
+                {dialogWindow}
                 <FormDialog open={this.state.showFeedbackDialog}
                             onClose={this.handleFeedbackDialogClose}
                             title={"Adding feedback"}
                             description={"Please add a relevant comment regarding the problem."}
                             nrVotes={this.props.marker.votes}
                             addVote={this.props.addVote}
-                            handleSendFeedback={this.props.handleSendFeedback}/>
+                            handleSendComment={this.props.handleSendComment}/>
+                <IssueDialog open={this.state.showIssueDialog}
+                             onClose={this.handleIssueDialogClose}
+                             issue={this.props.marker}
+                             handleAdminChanges={this.props.handleAdminChanges}/>
             </>
         )
     }

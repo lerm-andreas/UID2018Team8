@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button"
 import LoginHeader from "../../Header/LoginHeader";
-import {accounts, Markers} from "../../../BACKEND";
+import {accounts} from "../../../BACKEND";
 
 class LoginPage extends Component {
     constructor(props) {
@@ -28,10 +28,14 @@ class LoginPage extends Component {
             this.props.history.push('/home');
             localStorage.setItem('coins', accounts.userAccount.coins);
             localStorage.setItem('role', accounts.userAccount.role);
-            const markers = Markers;
-           // localStorage.setObject('markers', markers[0])
-        } else {
+        } else if (this.state.username === accounts.adminAccount.username && this.state.password === accounts.adminAccount.password) {
+            this.props.history.push('/home');
+            localStorage.setItem('coins', accounts.adminAccount.coins);
+            localStorage.setItem('role', accounts.adminAccount.role);
+        }
+        else {
             //TODO display some wrong input error
+
         }
 
     };
