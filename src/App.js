@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
+import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/styles';
+import createPalette from "@material-ui/core/styles/createPalette";
 import Main from "./components/Main/Main";
-import cyan from "@material-ui/core/es/colors/cyan";
-import createMuiTheme from "@material-ui/core/es/styles/createMuiTheme";
-import lightBlue from "@material-ui/core/es/colors/lightBlue";
-import {withStyles} from "@material-ui/core/styles";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const theme = createMuiTheme({
-    palette: {
-        primary: cyan,
-        secondary: lightBlue
-    }
+    palette: createPalette({
+        primary: {main: "#3f51b5"}
+    }),
 });
+
 
 class App extends Component {
     render() {

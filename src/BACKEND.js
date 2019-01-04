@@ -36,6 +36,7 @@ export const Categories = {
     socialAssistance: 'social assistance',
     trash: 'trash',
     parking: 'parking',
+    traffic: 'traffic'
     //TODO add more categories maybe???
 };
 
@@ -48,7 +49,8 @@ export const StatusToColor = {
 export const CategoryToIcon = {
     socialAssistance: "people",
     parking: "local_parking",
-    trash: "restore_from_trash"
+    trash: "restore_from_trash",
+    traffic: "traffic"
 };
 
 export const Markers = [
