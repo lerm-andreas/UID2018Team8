@@ -4,7 +4,7 @@ import pic3 from './images/cort-2-persoane.jpg'
 import pic4 from './images/electric-castle-alb.jpg'
 import pic5 from './images/pony_car.jpg'
 import pic6 from './images/tricout-Cluj-Napoca.jpg'
-
+import pic7 from './images/recycling.jpg'
 
 export function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
@@ -95,6 +95,7 @@ export const Markers = [
 
 export const shoppingPageUrl = '/shoppingPage';
 export const homePageUrl = "/home";
+export const eventsPageUrl = "/eventsPage";
 
 export const shoppingItems = [
     {
@@ -136,3 +137,16 @@ export const shoppingItems = [
         price: 20
     },
 ];
+
+export const eventItems = [
+    {   image: pic7,
+        title: "Event1",
+        description: "He went such dare good mr fact. The small own seven saved man age ﻿no offer. Suspicion did mrs nor furniture smallness. Scale whole downs often leave not eat. An expression reasonably cultivated indulgence mr he surrounded instrument. Gentleman eat and consisted are pronounce distrusts."
+    },
+    {   image: pic7,
+        title: "Event2",
+        description: "Desciere2" 
+    },
+];
+
+

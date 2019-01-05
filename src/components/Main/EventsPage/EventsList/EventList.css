@@ -1,5 +1,6 @@
 .shoppingList {
     display: block;
+    color: brown;
     width: 100%;
     float: right;
     min-height: 75vh;

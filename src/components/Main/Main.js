@@ -3,7 +3,8 @@ import {Route, Switch} from 'react-router-dom'
 import LoginPage from "./LoginPage/LoginPage";
 import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
-import {shoppingPageUrl} from "../../BACKEND";
+import {EventsPage} from "./EventsPage/EventsPage";
+import {shoppingPageUrl,eventsPageUrl} from "../../BACKEND";
 
 const Main = () => {
     return (
@@ -11,9 +12,9 @@ const Main = () => {
             <Route exact path={"/"} component={LoginPage}/>
             <Route exact path={"/home"} component={MainPage}/>
             <Route exact path={shoppingPageUrl} component={ShopPage}/>
+            <Route exact path={eventsPageUrl} component = {EventsPage}/>
         </Switch>
     )
-
 };
 
 export default Main;
