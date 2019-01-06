@@ -127,7 +127,7 @@ class Marker extends React.Component {
                             onClose={this.handleFeedbackDialogClose}
                             title={"Adding feedback"}
                             description={"Please add a relevant comment regarding the problem."}
-                            nrVotes={this.props.marker.votes}
+                            issue={this.props.marker}
                             addVote={this.props.addVote}
                             handleSendComment={this.props.handleSendComment}/>
                 <IssueDialog open={this.state.showIssueDialog && this.props.showDialog}

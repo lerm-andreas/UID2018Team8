@@ -28,7 +28,6 @@ class Map extends Component {
         let currMarkers = this.state.markers;
         if (!currMarkers[index].beenVoted)
             currMarkers[index].votes += 1;
-
         else
             currMarkers[index].votes -= 1;
         currMarkers[index].beenVoted = !currMarkers[index].beenVoted;

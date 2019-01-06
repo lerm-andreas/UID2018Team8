@@ -4,9 +4,10 @@ import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/st
 import createPalette from "@material-ui/core/styles/createPalette";
 import Main from "./components/Main/Main";
 
+
 const theme = createMuiTheme({
     palette: createPalette({
-        primary: {main: "#3f51b5"}
+        primary: {main: "#283593"}
     }),
 });
 

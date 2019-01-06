@@ -48,11 +48,13 @@ export class FormDialog extends React.Component {
                                    type="text"
                                    fullWidth
                                    onChange={this.handleTextFieldChange}/>
-                        {"Votes " + this.props.nrVotes}
+                        {"Votes " + this.props.issue.votes}
                     </DialogContent>
                     <DialogActions>
                         <IconButton onClick={this.props.addVote}>
-                            <Icon variant="outlined">thumb_up</Icon>
+                            <Icon
+                                variant="outlined">{this.props.issue.beenVoted === true ? "thumb_down"
+                                : "thumb_up"}</Icon>
                         </IconButton>
                         <Button
                             disabled={this.state.textFieldValue.length === 0}

@@ -60,26 +60,25 @@ class UserHeader extends Component {
             <UserMenu anchorEl={this.state.anchorEl}/>) : null;
 
         return (
-            <div>
-                <ClickAwayListener onClickAway={this.handleClickAway}>
 
-                    <IconButton onClick={() => this.props.history.push(homePageUrl)}>
-                        <Icon>home</Icon>
-                    </IconButton>
+            <ClickAwayListener onClickAway={this.handleClickAway}>
 
-                    <IconButton onClick={this.handleClick}>
-                        <AccountCircle/>
-                    </IconButton>
-                    {localStorage.getItem('coins') + ' Cluj Coins'}
-                    {shoppingButton}
-                    {searchButton}
-                    {userMenu}
-                    <Button className={classes.secondButton} variant={'contained'}
-                            onClick={() => this.props.history.push('/')}>Logout</Button>
-                </ClickAwayListener>
-            </div>
+                <IconButton onClick={() => this.props.history.push(homePageUrl)}>
+                    <Icon>home</Icon>
+                </IconButton>
+
+                <IconButton onClick={this.handleClick}>
+                    <AccountCircle/>
+                </IconButton>
+                {localStorage.getItem('coins') + ' Cluj Coins'}
+                {shoppingButton}
+                {searchButton}
+                {userMenu}
+                <Button className={classes.secondButton} variant={'contained'}
+                        onClick={() => this.props.history.push('/')}>Logout</Button>
+            </ClickAwayListener>
         )
     }
 }
 
-export default withStyles(styles)(withRouter(UserHeader));
+export default withStyles(styles, {withTheme: true})(withRouter(UserHeader));
