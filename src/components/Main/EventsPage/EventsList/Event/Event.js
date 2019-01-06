@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from "@material-ui/core/CardHeader/CardHeader";
-import InviteButton from "./InviteButton"
+import InviteEvent from "./InviteEvent"
 
 const styles = {
     card: {
@@ -50,15 +50,7 @@ function Event(props) {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-                <List>
-                <Button className={classes.button}
-                        size="small" color="primary"
-                        variant='contained'
-                        onClick={props.addItemToShoppingCart}>
-                    Join event
-                </Button>
-                <InviteButton/>
-                </List>            
+                <InviteEvent/>            
         </Card>
     );
 }
