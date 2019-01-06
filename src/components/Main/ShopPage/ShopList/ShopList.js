@@ -19,8 +19,6 @@ const styles = theme => ({
 });
 
 class ShopList extends React.Component {
-
-
     render() {
 
         const {classes} = this.props;

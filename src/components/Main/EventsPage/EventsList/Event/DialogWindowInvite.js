@@ -5,12 +5,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import CheckboxListSecondary from "./CheckboxList";
 
 const AlertDialog = (props) => {
 
     return (
         <div>
-
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -22,7 +22,9 @@ const AlertDialog = (props) => {
                     <DialogContentText id="alert-dialog-description">
                         {props.description}
                     </DialogContentText>
-                    Hello!
+                <DialogContentText>
+                    <CheckboxListSecondary/>
+                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onOption1} color="primary">
