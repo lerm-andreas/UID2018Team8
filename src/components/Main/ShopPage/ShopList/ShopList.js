@@ -1,5 +1,5 @@
 import React from 'react';
-import './ShopList.css'
+//import './ShopList.css'
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -11,6 +11,7 @@ const styles = theme => ({
     item: {
         padding: '10px 10px 20px 100px !important',
     },
+
     container: {
         padding: 30,
         flexGrow: 1,
