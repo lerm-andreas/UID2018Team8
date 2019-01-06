@@ -14,7 +14,9 @@ export const accounts = {
     adminAccount: {
         username: 'admin',
         password: 'password',
-        role: 'admin'
+        role: 'admin',
+        coins: 10000
+
     },
     userAccount: {
         username: 'user',
@@ -41,9 +43,9 @@ export const Categories = {
 };
 
 export const StatusToColor = {
-    inProgress: "#1A237E",
-    approved: "#5C6BC0",
-    completed: "#9FA8DA"
+    inProgress: "#0000d6",
+    approved: "#7e3ff2",
+    completed: "#e98df5"
 };
 
 export const CategoryToIcon = {
