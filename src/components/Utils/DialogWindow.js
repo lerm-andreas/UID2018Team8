@@ -22,7 +22,6 @@ const AlertDialog = (props) => {
                     <DialogContentText id="alert-dialog-description">
                         {props.description}
                     </DialogContentText>
-                    Hello!
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onOption1} color="primary">
