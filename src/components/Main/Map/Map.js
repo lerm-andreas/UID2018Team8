@@ -47,6 +47,10 @@ class Map extends Component {
             currMarkers[index][key] = changes[key]
         ));
         this.setState({markers: currMarkers, showDialog: false});
+        setTimeout(() => {
+            this.setState({showDialog: true})
+        }, 500);
+
     };
 
     render() {
