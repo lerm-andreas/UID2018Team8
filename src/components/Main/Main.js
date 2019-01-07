@@ -4,7 +4,8 @@ import LoginPage from "./LoginPage/LoginPage";
 import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
 import {EventsPage} from "./EventsPage/EventsPage";
-import {shoppingPageUrl,eventsPageUrl} from "../../BACKEND";
+import {MyAccountPage} from "./MyAccountPage/MyAccountPage";
+import {shoppingPageUrl,eventsPageUrl,myAccountPageUrl} from "../../BACKEND";
 
 const Main = () => {
     return (
@@ -13,6 +14,7 @@ const Main = () => {
             <Route exact path={"/home"} component={MainPage}/>
             <Route exact path={shoppingPageUrl} component={ShopPage}/>
             <Route exact path={eventsPageUrl} component = {EventsPage}/>
+            <Route exact path={myAccountPageUrl} component = {MyAccountPage}/>
         </Switch>
     )
 };

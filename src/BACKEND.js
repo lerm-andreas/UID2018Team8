@@ -98,6 +98,7 @@ export const Markers = [
 export const shoppingPageUrl = '/shoppingPage';
 export const homePageUrl = "/home";
 export const eventsPageUrl = "/eventsPage";
+export const myAccountPageUrl = "/myAccount";
 
 export const shoppingItems = [
     {
