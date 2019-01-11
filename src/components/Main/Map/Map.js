@@ -17,11 +17,16 @@ class Map extends Component {
             zoom: 15,
             markers: Markers,
             role: localStorage.getItem('role'),
-            showDialog: true
+            showIssueDialog: false,
+            showFeedbackDialog: false,
         };
         this.addVote = this.addVote.bind(this);
         this.handleSendComment = this.handleSendComment.bind(this);
         this.handleAdminChanges = this.handleAdminChanges.bind(this);
+        this.openIssueDialog = this.openIssueDialog.bind(this);
+        this.openFeedbackDialog = this.openFeedbackDialog.bind(this);
+        this.closeFeedbackDialog = this.closeFeedbackDialog.bind(this);
+        this.closeIssueDialog = this.closeIssueDialog.bind(this);
     }
 
     addVote = (index) => {
@@ -38,7 +43,24 @@ class Map extends Component {
     handleSendComment = (index, comment) => {
         let currMarkers = this.state.markers;
         currMarkers[index].userComments.push(comment);
-        this.setState({markers: currMarkers, showDialog: false});
+        this.setState({markers: currMarkers, showFeedbackDialog: false});
+    };
+
+    openFeedbackDialog = () => {
+        this.setState({showFeedbackDialog: true})
+    };
+
+    closeFeedbackDialog = () => {
+        this.setState({showFeedbackDialog: false})
+
+    };
+
+    openIssueDialog = () => {
+        this.setState({showIssueDialog: true})
+    };
+
+    closeIssueDialog = () => {
+        this.setState({showIssueDialog: false})
     };
 
     handleAdminChanges = (index, changes) => {
@@ -46,11 +68,7 @@ class Map extends Component {
         Object.keys(changes).forEach((key) => (
             currMarkers[index][key] = changes[key]
         ));
-        this.setState({markers: currMarkers, showDialog: false});
-        setTimeout(() => {
-            this.setState({showDialog: true})
-        }, 500);
-
+        this.setState({markers: currMarkers, showIssueDialog: false});
     };
 
     render() {
@@ -65,7 +83,12 @@ class Map extends Component {
                     addVote={() => this.addVote(index)}
                     handleSendComment={(comment) => this.handleSendComment(index, comment)}
                     handleAdminChanges={(changes) => this.handleAdminChanges(index, changes)}
-                    showDialog={this.state.showDialog}/>
+                    openFeedbackDialog={this.openFeedbackDialog}
+                    openIssueDialog={this.openIssueDialog}
+                    closeFeedbackDialog={this.closeFeedbackDialog}
+                    closeIssueDialog={this.closeIssueDialog}
+                    showFeedbackDialog={this.state.showFeedbackDialog}
+                    showIssueDialog={this.state.showIssueDialog}/>
         ));
 
         return (
@@ -76,7 +99,6 @@ class Map extends Component {
                             key: 'AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats',
                             v: '3.31'
                         }}
-                        // apiKey={"AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats"}
                         defaultCenter={this.state.center}
                         defaultZoom={this.state.zoom}
                         v={'3.31'}>

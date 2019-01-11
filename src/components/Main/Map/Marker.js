@@ -58,6 +58,7 @@ class Marker extends React.Component {
     };
 
     handleFeedbackDialogClose = () => {
+        alert("Show feedback dialog now false");
         this.setState({showFeedbackDialog: false});
     };
 
@@ -99,7 +100,7 @@ class Marker extends React.Component {
                     description={description}
                     option1={"Add feedback"}
                     option2={<ShareButton/>}
-                    onOption1={this.handleFeedbackDialog}/>
+                    onOption1={this.props.openFeedbackDialog}/>
         }
 
         else {
@@ -111,7 +112,7 @@ class Marker extends React.Component {
                               " or contact the authorities"}
                               option1={"Change status"}
                               option2={"Contact authorities"}
-                              onOption1={this.handleIssueDialog}
+                              onOption1={this.props.openIssueDialog}
                               onOption2={this.handleContactAuthorities}/>
         }
 
@@ -123,15 +124,15 @@ class Marker extends React.Component {
                         style={{color: StatusToColor[getKeyByValue(Status, this.props.marker.status)]}}>{icon}</Icon>
                 </IconButton>
                 {dialogWindow}
-                <FormDialog open={this.state.showFeedbackDialog && this.props.showDialog}
-                            onClose={this.handleFeedbackDialogClose}
+                <FormDialog open={this.props.showFeedbackDialog}
+                            onClose={this.props.closeFeedbackDialog}
                             title={"Adding feedback"}
                             description={"Please add a relevant comment regarding the problem."}
                             issue={this.props.marker}
                             addVote={this.props.addVote}
                             handleSendComment={this.props.handleSendComment}/>
-                <IssueDialog open={this.state.showIssueDialog && this.props.showDialog}
-                             onClose={this.handleIssueDialogClose}
+                <IssueDialog open={this.props.showIssueDialog}
+                             onClose={this.props.closeIssueDialog}
                              issue={this.props.marker}
                              handleAdminChanges={this.props.handleAdminChanges}/>
             </>
