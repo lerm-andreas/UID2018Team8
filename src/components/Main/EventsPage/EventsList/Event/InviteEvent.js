@@ -5,9 +5,9 @@ import DialogWindow from "../../../../Utils/DialogWindow";
 import DialogWindowInvite from "./DialogWindowInvite";
 
 const styles = theme => ({
-    fab: {
-        margin: theme.spacing.unit,
-    },
+    // fab: {
+    //     margin: theme.spacing.unit,
+    // },
     extendedIcon: {
         marginRight: theme.spacing.unit,
     },
@@ -17,7 +17,6 @@ const styles = theme => ({
         variant: 'contained',
     }
 });
-
 
 class InviteEvent extends React.Component {
 
@@ -91,6 +90,7 @@ class InviteEvent extends React.Component {
                         color={this.state.buttonColor}
                         variant='contained'
                         onClick={this.handleJoinButtonClicked}>
+<<<<<<< Updated upstream
                     {this.state.buttonText}
                 </Button>
                 {this.state.showInviteButton ?
@@ -100,6 +100,16 @@ class InviteEvent extends React.Component {
                             color="primary"
                             variant='contained'
                             onClick={this.handleInviteBoxOpen}>
+=======
+                        {this.state.buttonText}
+                    </Button>
+                    {this.state.showInviteButton ?
+                    <Button className={classes.button}
+                        size="small" 
+                        color="primary"
+                        variant='contained'
+                        onClick={this.handleInviteBoxOpen}>
+>>>>>>> Stashed changes
                         Invite people
                     </Button> : null}
 

@@ -27,7 +27,7 @@ class EventList extends React.Component {
 
         return (
             <List container className={classes.container} spacing={200} >
-                {eventItems.map((value, index) => (
+                {this.props.events.map((value, index) => (
                     <Grid key={index} item xs={4} className={classes.item}>
                         <Event  title={value.title} image={value.image}
                                 description={value.description}

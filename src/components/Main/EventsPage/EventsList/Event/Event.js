@@ -21,8 +21,8 @@ const styles = {
         marginRight: 100,
     },
     media: {
-        height: 250,
-        width: 345
+        height: 300,
+        width: 1600
     },
     button: {
         margin: '0 auto ',
