@@ -1,0 +1,19 @@
+.request-card {
+    width: 65vw;
+    height: 80vh;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 5vh;
+
+}
+.request-sel {
+    min-width: 20vw;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    margin-left: 3vw;
+    float: left;
+}
+.request-textarea {
+    width: 59vw;
+    margin-top: 5vh;
+}

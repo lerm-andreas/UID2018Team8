@@ -5,7 +5,8 @@ import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
 import {EventsPage} from "./EventsPage/EventsPage";
 import {MyAccountPage} from "./MyAccountPage/MyAccountPage";
-import {shoppingPageUrl,eventsPageUrl,myAccountPageUrl} from "../../BACKEND";
+import {shoppingPageUrl, eventsPageUrl, myAccountPageUrl, powerUserReqUrl} from "../../BACKEND";
+import PowerUserReqPage from "./PowerUserReqPage/PowerUserReqPage";
 
 const Main = () => {
     return (
@@ -15,6 +16,7 @@ const Main = () => {
             <Route exact path={shoppingPageUrl} component={ShopPage}/>
             <Route exact path={eventsPageUrl} component = {EventsPage}/>
             <Route exact path={myAccountPageUrl} component = {MyAccountPage}/>
+            <Route exact path={powerUserReqUrl} component = {PowerUserReqPage}/>
         </Switch>
     )
 };

@@ -4,7 +4,13 @@ import SearchComponent from "./SearchComponent";
 import './SearchComponent.css'
 import Marker from "./Marker";
 import {Markers} from "../../../BACKEND";
-
+import Drawer from '@material-ui/core/Drawer';
+import withStyles from "@material-ui/core/styles/withStyles";
+const styles = {
+    search: {
+        width: '30vw',
+    }
+};
 class Map extends Component {
 
     constructor(props) {
@@ -74,9 +80,10 @@ class Map extends Component {
     render() {
         let h = '100vh';
         let w = '100%';
-        if (this.props.searchOpen) {
-            w = '70%';
-        }
+        // if (this.props.searchOpen) {
+        //     w = '70%';
+        // }
+        const {classes} = this.props;
 
         let markers = this.state.markers.map((marker, index) => (
             <Marker lat={marker.lat} lng={marker.lng} marker={marker}
@@ -105,14 +112,25 @@ class Map extends Component {
                         {markers}
                     </GoogleMapReact>
                 </div>
-                {this.props.searchOpen &&
-                <div className={'testLine1'} style={{height: h, width: '30%'}}>
-                    <SearchComponent/>
-                </div>}
+                {/*{this.props.searchOpen &&*/}
+                {/*<div className={'testLine1'} style={{height: h, width: '30%'}}>*/}
+                    {/*<SearchComponent/>*/}
+                {/*</div>}*/}
+                <Drawer anchor="right" open={this.props.searchOpen} onClose={this.props.toggleSearch}>
+                    <div
+                        className={classes.search}
+                        tabIndex={0}
+                        role="button"
+                        onClick={this.props.toggleSearch}
+                    >
+                        <p>ceva</p>
+                        <p>altceva</p>
+                    </div>
+                </Drawer>
             </div>
         );
     }
 }
 
-export default Map
+export default withStyles(styles)(Map);
 

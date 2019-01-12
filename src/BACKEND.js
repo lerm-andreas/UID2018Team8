@@ -100,6 +100,7 @@ export const shoppingPageUrl = '/shoppingPage';
 export const homePageUrl = "/home";
 export const eventsPageUrl = "/eventsPage";
 export const myAccountPageUrl = "/myAccount";
+export const powerUserReqUrl = "/powerRequest";
 
 export const shoppingItems = [
     {
@@ -152,5 +153,13 @@ export let eventItems = [
         description: "Desciere bla bla" 
     },
 ];
+
+export const cityAreas = {
+    manastur: "Manastur",
+    marasti: "Marasti",
+    centru: "Centru",
+    grigorescu: "Grigorescu",
+    bunaziua: "Buna Ziua",
+};
 
 

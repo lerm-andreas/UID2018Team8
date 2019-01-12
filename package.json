@@ -11,6 +11,8 @@
     "material-ui-popup-state": "^1.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-dropzone": "^8.0.3",
+    "react-dropzone-component": "^3.2.0",
     "react-facebook": "^6.0.15",
     "react-images-upload": "^1.2.6",
     "react-router-dom": "^4.3.1",

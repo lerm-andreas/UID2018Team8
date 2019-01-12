@@ -20,8 +20,8 @@ export class MainPage extends Component {
 
     render() {
         return <div className="mainPage">
-            <UserHeader handleSearch={this.handleSearch} buying={false} searching={true}/>
-            <Map searchOpen={this.state.searchOpen}/>
+            <UserHeader toggleSearch={this.handleSearch} buying={false} searching={true}/>
+            <Map toggleSearch={this.handleSearch} searchOpen={this.state.searchOpen}/>
         </div>
     }
 }

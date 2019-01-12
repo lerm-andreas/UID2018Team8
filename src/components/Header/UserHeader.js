@@ -46,6 +46,7 @@ class UserHeader extends Component {
         const {classes} = this.props;
         let shoppingButton = null;
         let searchButton = null;
+        let buttonPlaceholder = null;
         if (this.props.buying) {
             shoppingButton = <Button className={classes.firstButton} variant={'outlined'}
                                      onClick={this.props.handleShoppingCart}>Shopping
@@ -53,7 +54,10 @@ class UserHeader extends Component {
         }
         if (this.props.searching) {
             searchButton = <Button className={classes.firstButton} variant={'outlined'}
-                                   onClick={this.props.handleSearch}>Search</Button>
+                                   onClick={this.props.toggleSearch}>Search</Button>
+        }
+        if (!this.props.searching && !this.props.buying) {
+            buttonPlaceholder = <Button className={classes.firstButton}/>
         }
 
         let userMenu = this.state.showUserMenu ? (
@@ -73,6 +77,7 @@ class UserHeader extends Component {
                 {localStorage.getItem('coins') + ' Cluj Coins'}
                 {shoppingButton}
                 {searchButton}
+                {buttonPlaceholder}
                 {userMenu}
                 <Button className={classes.secondButton} variant={'contained'}
                         onClick={() => this.props.history.push('/')}>Logout</Button>
