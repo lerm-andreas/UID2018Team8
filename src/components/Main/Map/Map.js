@@ -11,6 +11,7 @@ const styles = {
         width: '30vw',
     }
 };
+
 class Map extends Component {
 
     constructor(props) {
@@ -114,15 +115,15 @@ class Map extends Component {
                 </div>
                 {/*{this.props.searchOpen &&*/}
                 {/*<div className={'testLine1'} style={{height: h, width: '30%'}}>*/}
-                    {/*<SearchComponent/>*/}
+                {/*<SearchComponent/>*/}
                 {/*</div>}*/}
-                <Drawer anchor="right" open={this.props.searchOpen} onClose={this.props.toggleSearch}>
+                <Drawer anchor="right" open={this.props.searchOpen}
+                        onClose={this.props.toggleSearch}>
                     <div
                         className={classes.search}
                         tabIndex={0}
                         role="button"
-                        onClick={this.props.toggleSearch}
-                    >
+                        onClick={this.props.toggleSearch}>
                         <p>ceva</p>
                         <p>altceva</p>
                     </div>

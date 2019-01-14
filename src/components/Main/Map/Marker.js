@@ -121,7 +121,10 @@ class Marker extends React.Component {
                 <IconButton aria-label="Delete" className={classes.button}
                             onClick={this.handleDialogOpen}>
                     <Icon
-                        style={{color: StatusToColor[getKeyByValue(Status, this.props.marker.status)]}}>{icon}</Icon>
+                        style={{
+                            color: StatusToColor[getKeyByValue(Status, this.props.marker.status)],
+                            fontSize: 33
+                        }}>{icon}</Icon>
                 </IconButton>
                 {dialogWindow}
                 <FormDialog open={this.props.showFeedbackDialog}

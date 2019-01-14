@@ -10,23 +10,23 @@ import Select from "@material-ui/core/Select/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import {Status} from "../../BACKEND";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 export class IssueDialog extends React.Component {
 
 
-    constructor(props) {
-        super(props);
-        this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
-        this.state = {
-            textFieldValue: '',
-            statusValue: this.props.issue.status
-        }
-    }
+    onClose = () => {
+        this.setState({showConfDialog: false})
+    };
 
     handleTextFieldChange = (e) => {
         this.setState({
             textFieldValue: e.target.value
         });
+    };
+    handleAdminChanges = () => {
+        this.props.handleAdminChanges(this.getChanges());
+        this.setState({showConfDialog: true})
     };
 
     handleChange = (e) => {
@@ -39,6 +39,15 @@ export class IssueDialog extends React.Component {
         return {status: this.state.statusValue, adminComments: this.state.textFieldValue}
     };
 
+    constructor(props) {
+        super(props);
+        this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
+        this.state = {
+            textFieldValue: '',
+            statusValue: this.props.issue.status,
+            showConfDialog: false,
+        }
+    }
 
     render() {
 
@@ -87,13 +96,16 @@ export class IssueDialog extends React.Component {
                     <DialogActions>
                         <Button
                             disabled={this.state.textFieldValue.length === 0}
-                            onClick={() => this.props.handleAdminChanges(this.getChanges())}
+                            onClick={this.handleAdminChanges}
                             color="primary"
                             autoFocus>
                             Finish changes
                         </Button>
                     </DialogActions>
                 </Dialog>
+                <ConfirmationDialog open={this.state.showConfDialog}
+                                    onClose={this.onClose}
+                                    description={"Status changed added"}/>
             </div>
         );
     }

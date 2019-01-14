@@ -7,7 +7,6 @@ const ConfirmationDialog = (props) => {
 
     return (
         <div>
-
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -18,7 +17,6 @@ const ConfirmationDialog = (props) => {
                         {props.description}
                     </DialogContentText>
                 </DialogContent>
-
             </Dialog>
         </div>
     );

@@ -8,23 +8,33 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import Icon from "@material-ui/core/Icon/Icon";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 export class FormDialog extends React.Component {
 
 
-    constructor(props) {
-        super(props);
-        this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
-        this.state = {
-            textFieldValue: ''
-        }
-    }
+    sendComment = () => {
+        this.props.handleSendComment(this.state.textFieldValue);
+        this.setState({showConfDialog: true})
+    };
 
     handleTextFieldChange = (e) => {
         this.setState({
             textFieldValue: e.target.value
         });
     };
+    onClose = () => {
+        this.setState({showConfDialog: false})
+    };
+
+    constructor(props) {
+        super(props);
+        this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
+        this.state = {
+            textFieldValue: '',
+            showConfDialog: false,
+        }
+    }
 
     render() {
 
@@ -58,13 +68,16 @@ export class FormDialog extends React.Component {
                         </IconButton>
                         <Button
                             disabled={this.state.textFieldValue.length === 0}
-                            onClick={() => this.props.handleSendComment(this.state.textFieldValue)}
+                            onClick={this.sendComment}
                             color="primary"
                             autoFocus>
                             Send feedback
                         </Button>
                     </DialogActions>
                 </Dialog>
+                <ConfirmationDialog open={this.state.showConfDialog}
+                                    onClose={this.onClose}
+                                    description={"Feedback added"}/>
             </div>
         );
     }
