@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from "@material-ui/core/Select/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import {Status} from "../../BACKEND";
+import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 
 export class IssueDialog extends React.Component {
 
@@ -72,7 +73,7 @@ export class IssueDialog extends React.Component {
                                    fullWidth
                                    onChange={this.handleTextFieldChange}/>
                         <Select
-                            value={issue.status}
+                            value={this.state.statusValue}
                             onChange={this.handleChange}
                             inputProps={{
                                 name: 'new status'
@@ -81,6 +82,7 @@ export class IssueDialog extends React.Component {
                             <MenuItem value={Status.approved}>{Status.approved}</MenuItem>
                             <MenuItem value={Status.completed}>{Status.completed}</MenuItem>
                         </Select>
+                        <FormHelperText>Choose the updated status</FormHelperText>
                     </DialogContent>
                     <DialogActions>
                         <Button
