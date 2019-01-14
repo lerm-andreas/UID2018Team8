@@ -8,7 +8,7 @@ import {shoppingItems} from "../../../../BACKEND";
 
 const styles = theme => ({
     item: {
-        padding: '10px 10px 20px 100px !important',
+        padding: '10px 10px 20px 80px !important',
     },
 
     container: {

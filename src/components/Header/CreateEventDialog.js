@@ -4,12 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Select from "@material-ui/core/Select/Select";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import {Status} from "../../BACKEND";
-import {eventItems} from "../../BACKEND";
 import ImageUploader from 'react-images-upload';
 import recyclingPic from "../../images/recycling2.jpg";
 

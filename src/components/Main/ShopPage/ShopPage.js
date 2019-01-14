@@ -81,7 +81,7 @@ export class ShopPage extends Component {
             />;
 
         return (
-            <div className="shopPage">
+            <div style={{width: '98%', margin: 'auto'}}>
                 <UserHeader buying={true} searching={false}
                             handleShoppingCart={this.handleShoppingCart}/>
                 <ShopList addItemToShoppingCart={this.addItemToShoppingCart}/>

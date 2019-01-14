@@ -9,6 +9,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Icon from "@material-ui/core/Icon/Icon";
 import {CreateEventDialog} from "./CreateEventDialog"
 import {homePageUrl} from "../../BACKEND";
+import Divider from "@material-ui/core/Divider/Divider";
 
 
 const styles = theme => ({
@@ -107,6 +108,7 @@ class UserHeaderEvent extends Component {
 
 
                 {createEventDialog}
+                <Divider/>
             </ClickAwayListener>
             
         )

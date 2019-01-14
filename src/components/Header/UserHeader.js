@@ -8,6 +8,7 @@ import {withRouter} from "react-router-dom";
 import {withStyles} from '@material-ui/core/styles';
 import Icon from "@material-ui/core/Icon/Icon";
 import {homePageUrl} from "../../BACKEND";
+import Divider from "@material-ui/core/Divider/Divider";
 
 
 const styles = theme => ({
@@ -81,6 +82,7 @@ class UserHeader extends Component {
                 {userMenu}
                 <Button className={classes.secondButton} variant={'contained'}
                         onClick={() => this.props.history.push('/')}>Logout</Button>
+                <Divider/>
             </ClickAwayListener>
         )
     }
