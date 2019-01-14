@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
-import SearchComponent from "./SearchComponent";
 import './SearchComponent.css'
 import Marker from "./Marker";
 import {Markers} from "../../../BACKEND";
 import Drawer from '@material-ui/core/Drawer';
 import withStyles from "@material-ui/core/styles/withStyles";
+
 const styles = {
     search: {
         width: '30vw',
@@ -103,7 +103,7 @@ class Map extends Component {
                 <div className={'testLine'} style={{height: h, width: w}}>
                     <GoogleMapReact
                         bootstrapURLKeys={{
-                            key: 'AIzaSyCj_F-2dpfr0GHg-zIWaZeeFU1UYN6Yats',
+                            key: 'AIzaSyBQ4D87IzLHgZ1DolJTfKDr_YdWabJKfH4',
                             v: '3.31'
                         }}
                         defaultCenter={this.state.center}

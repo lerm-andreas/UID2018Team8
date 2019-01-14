@@ -52,9 +52,9 @@ export class IssueDialog extends React.Component {
                     aria-labelledby="form-dialog-title">
                     <DialogTitle
                         id="form-dialog-title">
-                        {"Issue nr: " + issue.nr + " Category: " + issue.category + " Nr votes: " + issue.votes}
+                        {"Issue nr:" + issue.nr + " Category:" + issue.category + " Nr votes:" + issue.votes}
                         <br/>
-                        {"Status: " + issue.status}
+                        {"Status:" + issue.status}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText>

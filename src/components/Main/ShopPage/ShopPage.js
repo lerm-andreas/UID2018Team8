@@ -3,8 +3,17 @@ import UserHeader from "../../Header/UserHeader";
 import ShopList from "./ShopList/ShopList";
 import ShoppingCartModal from "./ShoppingCart/ShoppingCartModal";
 import DialogWindow from "../../Utils/DialogWindow";
+import ConfirmationDialog from "../../Utils/ConfirmationDialog";
 
 export class ShopPage extends Component {
+
+    addItemToShoppingCart = (itemIndexPair) => {
+        this.state.itemsToBuy.push(itemIndexPair);
+        this.setState({showConfirmationDialog: true})
+    };
+    closeConfDialog = () => {
+        this.setState({showConfirmationDialog: false})
+    };
 
     constructor(props) {
         super(props);
@@ -12,6 +21,7 @@ export class ShopPage extends Component {
             itemsToBuy: [],
             showShoppingCart: false,
             showDialogWindow: false,
+            showConfirmationDialog: false
         };
         this.addItemToShoppingCart = this.addItemToShoppingCart.bind(this);
         this.handleShoppingCart = this.handleShoppingCart.bind(this);
@@ -20,10 +30,6 @@ export class ShopPage extends Component {
         this.handleBuyRequest = this.handleBuyRequest.bind(this);
         this.handleFinalBuyRequest = this.handleFinalBuyRequest.bind(this);
     }
-
-    addItemToShoppingCart = (itemIndexPair) => {
-        this.state.itemsToBuy.push(itemIndexPair);
-    };
 
     handleBuyRequest = (total) => {
         if (total < localStorage.getItem('coins'))
@@ -39,9 +45,7 @@ export class ShopPage extends Component {
             localStorage.setItem('coins', myCoins - this.state.total);
             this.setState({itemsToBuy: [], showShoppingCart: false, showDialogWindow: false})
         }
-
     }
-
 
     handleShoppingCart = () => {
         this.setState(prevState => ({
@@ -85,6 +89,9 @@ export class ShopPage extends Component {
                                    itemsToBuy={this.state.itemsToBuy}
                                    handleBuyRequest={this.handleBuyRequest}/>
                 {dialogWindow}
+                <ConfirmationDialog open={this.state.showConfirmationDialog}
+                                    onClose={this.closeConfDialog}
+                                    description={"Item added to the basket"}/>
             </div>
         )
     }

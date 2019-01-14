@@ -86,11 +86,11 @@ class Marker extends React.Component {
         // let dialogProps = {};
         if (this.state.role === "user") {
             let description = <>
-                {"Status: " + this.props.marker.status}
+                {"Status:" + this.props.marker.status}
                 <br/>
-                {"User description: " + this.props.marker.description}
+                {"User description:" + this.props.marker.description}
                 <br/>
-                {"Admin comment: " + this.props.marker.adminComments}
+                {"Admin comment:" + this.props.marker.adminComments}
             </>;
             dialogWindow =
                 <DialogWindow
@@ -107,9 +107,9 @@ class Marker extends React.Component {
             dialogWindow =
                 <DialogWindow open={this.state.showInitialDialog}
                               onClose={this.handleDialogClose}
-                              title={"Issue nr: " + issue.nr + " Category: " + issue.category + " Nr votes: " + issue.votes}
+                              title={"Issue nr:" + issue.nr + " Category:" + issue.category + " Nr votes:" + issue.votes}
                               description={"Do you want to change the status of the problem" +
-                              " or contact the authorities"}
+                              " or contact the authorities?"}
                               option1={"Change status"}
                               option2={"Contact authorities"}
                               onOption1={this.props.openIssueDialog}

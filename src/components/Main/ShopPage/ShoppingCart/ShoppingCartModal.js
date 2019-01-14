@@ -19,7 +19,8 @@ const SimpleModal = (props) => {
             <Modal
                 open={props.open}
                 onClose={props.onClose}>
-                <ShoppingCart itemsToBuy={props.itemsToBuy} handleBuyRequest={props.handleBuyRequest}/>
+                <ShoppingCart itemsToBuy={props.itemsToBuy}
+                              handleBuyRequest={props.handleBuyRequest}/>
             </Modal>
         </div>
     );
@@ -30,6 +31,5 @@ SimpleModal.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-// We need an intermediary variable for handling the recursive nesting.
 export default withStyles(styles)(SimpleModal);
 

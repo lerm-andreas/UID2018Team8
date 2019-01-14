@@ -16,6 +16,7 @@ const styles = theme => ({
         left: 0,
         margin: '20% 36%',
         width: '30%',
+        minWidth: '300px',
     },
 });
 

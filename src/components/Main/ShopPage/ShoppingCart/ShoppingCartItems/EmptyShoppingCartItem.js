@@ -8,6 +8,9 @@ import Icon from "@material-ui/core/Icon/Icon";
 const styles = theme => ({
     item: {
         textAlign: "center"
+    },
+    listItem: {
+        fontSize: '1.25rem'
     }
 });
 
@@ -16,7 +19,7 @@ const ShopItem = (props) => {
     const {classes} = props;
 
     return (<ListItem className={classes.item}>
-            <ListItemText primary={props.title}/>
+            <ListItemText classes={{primary: classes.listItem}} primary={props.title}/>
             {props.showCheckout ?
                 <IconButton onClick={props.sendBuyRequest}>
                     <Icon>check_circle</Icon>

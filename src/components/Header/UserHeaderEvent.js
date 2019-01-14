@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
@@ -63,6 +61,8 @@ class UserHeaderEvent extends Component {
         const {classes} = this.props;
         let shoppingButton = null;
         let searchButton = null;
+        let buttonPlaceholder = null;
+
         if (this.props.buying) {
             shoppingButton = <Button className={classes.firstButton} variant={'outlined'}
                                      onClick={this.props.handleShoppingCart}>Shopping
@@ -73,6 +73,11 @@ class UserHeaderEvent extends Component {
                                    onClick={this.props.handleSearch}>Search</Button>
         }
 
+        if (!this.props.searching && !this.props.buying) {
+            buttonPlaceholder = <Button className={classes.firstButton}/>
+        }
+
+
         let userMenu = this.state.showUserMenu ? (
             <UserMenu anchorEl={this.state.anchorEl}/>) : null;
         
@@ -80,7 +85,7 @@ class UserHeaderEvent extends Component {
                                 open = {this.state.showCreateEventDialog}
                                 onClose = {this.handleCreateEventDialogClose}
                                 handleCreateEvent={this.props.handleCreateEvent}>
-                                </CreateEventDialog>
+        </CreateEventDialog>;
 
         return (
 
@@ -93,18 +98,15 @@ class UserHeaderEvent extends Component {
                     <AccountCircle/>
                 </IconButton>
                 {localStorage.getItem('coins') + ' Cluj Coins'}
-                {shoppingButton}
                 {searchButton}
                 {userMenu}
+                <Button className={classes.firstButton} variant={'contained'}
+                        onClick={this.handleCreateEventDialogOpen}>Create Event</Button>
                 <Button className={classes.secondButton} variant={'contained'}
                         onClick={() => this.props.history.push('/')}>Logout</Button>
-                {/* <Fab size="medium" color="secondary" aria-label="Add" className={classes.margin}>
-                    <AddIcon />
-                </Fab> */}
-                <Button className={classes.secondButton} variant={'contained'}
-                        onClick={this.handleCreateEventDialogOpen}>Create Event</Button>
+
+
                 {createEventDialog}
-                {/* {createEventDialog} */}
             </ClickAwayListener>
             
         )

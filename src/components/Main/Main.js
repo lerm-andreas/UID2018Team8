@@ -4,8 +4,8 @@ import LoginPage from "./LoginPage/LoginPage";
 import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
 import {EventsPage} from "./EventsPage/EventsPage";
-import {MyAccountPage} from "./MyAccountPage/MyAccountPage";
-import {shoppingPageUrl, eventsPageUrl, myAccountPageUrl, powerUserReqUrl} from "../../BACKEND";
+import MyAccountPage from "./MyAccountPage/MyAccountPage";
+import {eventsPageUrl, myAccountPageUrl, powerUserReqUrl, shoppingPageUrl} from "../../BACKEND";
 import PowerUserReqPage from "./PowerUserReqPage/PowerUserReqPage";
 
 const Main = () => {

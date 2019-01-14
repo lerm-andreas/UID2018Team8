@@ -57,7 +57,7 @@ class UserHeader extends Component {
                                    onClick={this.props.toggleSearch}>Search</Button>
         }
         if (!this.props.searching && !this.props.buying) {
-            buttonPlaceholder = <Button className={classes.firstButton}/>
+            buttonPlaceholder = <Button disabled={true} className={classes.firstButton}/>
         }
 
         let userMenu = this.state.showUserMenu ? (
