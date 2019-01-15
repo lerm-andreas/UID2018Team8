@@ -15,6 +15,7 @@ const styles = theme => ({
     container: {
         padding: 30,
         flexGrow: 1,
+        width:'80%'
     }
 });
 

@@ -14,7 +14,6 @@ import Divider from "@material-ui/core/Divider/Divider";
 
 const styles = theme => ({
     firstButton: {
-
         marginLeft: "65%"
     },
     secondButton: {
@@ -39,7 +38,7 @@ class UserHeaderEvent extends Component {
     handleClickAway = () => {
         setTimeout(function () {
             this.setState({showUserMenu: false}) 
-        }.bind(this), 2000)
+        }.bind(this), 5000)
     };
 
     handleClick = (event) => {

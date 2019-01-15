@@ -3,6 +3,8 @@ import UserHeaderEvent from "../../Header/UserHeaderEvent";
 import EventList from "../../Main/EventsPage/EventsList/EventList";
 import { eventItems } from "../../../BACKEND";
 import DialogWindow from "../../Utils/DialogWindow"
+import background from "../../../images/cluj.jpg"
+
 export class EventsPage extends Component {
 
     constructor(props) {
@@ -43,12 +45,12 @@ export class EventsPage extends Component {
             title={"You have successfully created a new event!"}>
         </DialogWindow>
         return (
-            <div className="eventsPage">
+            <div >
             {confimarionDialog}
             <UserHeaderEvent buying={true} searching={false}
                             handleShoppingCart={this.handleShoppingCart}
                             handleCreateEvent={this.handleCreateEvent}/>
-                <EventList events={this.state.events} addItemToShoppingCart={this.addItemToShoppingCart}/>
+                <EventList style={{backgroundImage:`url(${background})`}} className="eventsPage" events={this.state.events} addItemToShoppingCart={this.addItemToShoppingCart}/>
             </div>
         )
     }

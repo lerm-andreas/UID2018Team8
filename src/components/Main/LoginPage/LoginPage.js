@@ -3,6 +3,9 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button"
 import LoginHeader from "../../Header/LoginHeader";
 import {accounts} from "../../../BACKEND";
+import background from '../../../images/cluj.jpg'
+
+
 
 class LoginPage extends Component {
     constructor(props) {
@@ -53,7 +56,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <LoginHeader/>
                 <form onSubmit={this.handleSubmit}>
                     <TextField name={'username'} label={'Username'} type={'text'} required={true}

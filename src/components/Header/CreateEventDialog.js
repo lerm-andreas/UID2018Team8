@@ -87,8 +87,8 @@ export class CreateEventDialog extends React.Component {
                     </DialogContent>
                     <DialogActions>
                         <Button
-                            disabled={this.state.titleValue.length === 0}
-                            enabled = {this.state.titleValue.length!=0}
+                            disabled={this.state.titleValue.length === 0 || this.state.descriptionValue.length === 0}
+                            enabled = {this.state.titleValue.length!==0 && this.state.descriptionValue.length !==0}
                             onClick={()=>this.props.handleCreateEvent({image:this.state.imageValue,title:this.state.titleValue,description:this.state.descriptionValue})}
                             color="primary"
                             autoFocus>
