@@ -1,5 +1,4 @@
-import {Component} from "react";
-import React from "react";
+import React, {Component} from "react";
 import UserHeader from "../../Header/UserHeader";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import {cityAreas} from "../../../BACKEND";
@@ -9,11 +8,9 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Card from "@material-ui/core/Card/Card";
 import "./PowerUserReqPage.css";
 import withStyles from "@material-ui/core/styles/withStyles";
-import ShoppingCart from "../ShopPage/ShoppingCart/ShoppingCart";
-import Modal from "@material-ui/core/Modal/Modal";
-import Typography from "@material-ui/core/Typography/Typography";
 import Uploader from "../../Utils/Uploader/Uploader";
 import InfoModal from "../../Utils/InfoModal";
+import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 
 const styles = theme => ({
     paper: {
@@ -92,6 +89,7 @@ class PowerUserReqPage extends Component {
             <div className="">
                 <UserHeader buying={false} searching={false}/>
                 <Card className={'request-card'}>
+                    <CardHeader title={" Power user request. Please fill in the details"}/>
                     <div>
                     <Select className={'request-sel'} value={this.state.area} onChange={this.handleChange} displayEmpty
                              inputProps={{

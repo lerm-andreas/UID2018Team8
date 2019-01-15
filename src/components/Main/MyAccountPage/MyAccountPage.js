@@ -49,8 +49,7 @@ class MyAccountPage extends Component {
                                          secondName={localStorage.getItem("secondName")}
                                          birthday={localStorage.getItem("birthday")}
                                          address={localStorage.getItem("address")}
-                                         eMail={localStorage.getItem("eMail")}
-                        />
+                                         eMail={localStorage.getItem("eMail")}/>
                     </Grid>
                     {localStorage.getItem("role") === "admin" ?
                         <Grid className={classes.item} item xs={4}>
