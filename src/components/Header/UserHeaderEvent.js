@@ -37,8 +37,8 @@ class UserHeaderEvent extends Component {
 
     handleClickAway = () => {
         setTimeout(function () {
-            this.setState({showUserMenu: false}) 
-        }.bind(this), 5000)
+            this.setState({showUserMenu: false})
+        }.bind(this), 3000)
     };
 
     handleClick = (event) => {

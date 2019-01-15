@@ -31,7 +31,7 @@ class UserHeader extends Component {
         setTimeout(function () {
             this.setState({showUserMenu: false}) //After 2 seconds, set
             // render to true
-        }.bind(this), 5000)
+        }.bind(this), 3000)
     };
 
     handleClick = (event) => {

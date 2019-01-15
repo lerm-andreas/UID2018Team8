@@ -111,7 +111,8 @@ class PowerUserReqPage extends Component {
                     </div>
                     <br/>
                     </div>
-                    <Button className={classes.btn} variant='contained' onClick={this.handleSubmit}>Submit</Button>
+                    <Button className={classes.btn} color="primary" variant='contained'
+                            onClick={this.handleSubmit}>Submit</Button>
                 </Card>
                 <InfoModal open={this.state.showModal} close={this.handleClose} title={this.state.modalTitle} info={this.state.modalText}/>
             </div>
