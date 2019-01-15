@@ -21,7 +21,7 @@ const styles = {
         marginRight: 100,
     },
     media: {
-        height: 300,
+        height: 327,
         width: 1600
     },
     button: {

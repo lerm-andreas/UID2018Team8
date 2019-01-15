@@ -7,7 +7,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import ImageUploader from 'react-images-upload';
 import recyclingPic from "../../images/recycling2.jpg";
-
+import DialogWindow from "../Utils/DialogWindow"
+import Uploader from './../Utils/Uploader';
 
 export class CreateEventDialog extends React.Component {
     constructor(props) {
@@ -16,12 +17,11 @@ export class CreateEventDialog extends React.Component {
             titleValue:'',
             descriptionValue:'',
             imageValue:'',
-            pictures: [],
         }
         this.handleTitleChange=this.handleTitleChange.bind(this);
         this.onDrop = this.onDrop.bind(this);
+        this.handleDescriptionChange=this.handleDescriptionChange.bind(this);
     }
-
 
     handleTitleChange = (e) => {
         this.setState({
@@ -42,7 +42,7 @@ export class CreateEventDialog extends React.Component {
     }
 
     render() {
-
+        
         return (
             <div>
                 <Dialog
@@ -75,15 +75,20 @@ export class CreateEventDialog extends React.Component {
                                    fullWidth
                                    onChange={this.handleDescriptionChange}/>
 
-                        <ImageUploader
+                        {/* <ImageUploader
                                     withIcon={true}
                                     buttonText='Choose image'
                                     onChange={this.onDrop}
                                     maxFileSize={5242880}
+                                /> */}
+                                <Uploader
+                                onDrop = {this.onDrop}
                                 />
                     </DialogContent>
                     <DialogActions>
                         <Button
+                            disabled={this.state.titleValue.length === 0}
+                            enabled = {this.state.titleValue.length!=0}
                             onClick={()=>this.props.handleCreateEvent({image:this.state.imageValue,title:this.state.titleValue,description:this.state.descriptionValue})}
                             color="primary"
                             autoFocus>

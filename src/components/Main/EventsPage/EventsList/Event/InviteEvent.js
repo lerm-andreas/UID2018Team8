@@ -50,7 +50,7 @@ class InviteEvent extends React.Component {
     };
 
     handleConfirmationDialogClose = () => {
-        this.setState({showConfirmationDialog: false})
+        this.setState({showConfirmationDialog: false,showInviteBox:false})
     };
 
     handleJoinButtonClicked = () => {
@@ -65,7 +65,7 @@ class InviteEvent extends React.Component {
         const {classes} = this.props;
         let inviteUsersList = 
         <DialogWindowInvite 
-            open={this.state.showInviteBox}
+            open={this.state.showInviteBox && !this.state.showConfirmationDialog}
             onClose={this.handleInviteBoxClose}
             title={"Select the users you want to invite"}
             option1={"Invite selected users"}
@@ -76,7 +76,7 @@ class InviteEvent extends React.Component {
         <DialogWindow
             open={this.state.showConfirmationDialog}
             onClose={this.handleConfirmationDialogClose}
-            title={"You have invited the users to this event!"}>
+            title={"You have successfully invited the users to this event!"}>
         </DialogWindow>
         return(
             <div>   
@@ -97,6 +97,7 @@ class InviteEvent extends React.Component {
                     </Button> :null}
                     
                      {inviteUsersList}
+                    
                      {confimarionDialog}
             </div>
         )

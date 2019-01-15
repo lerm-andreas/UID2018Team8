@@ -37,8 +37,7 @@ class UserHeaderEvent extends Component {
 
     handleClickAway = () => {
         setTimeout(function () {
-            this.setState({showUserMenu: false}) //After 2 seconds, set
-            // render to true
+            this.setState({showUserMenu: false}) 
         }.bind(this), 2000)
     };
 
@@ -109,6 +108,8 @@ class UserHeaderEvent extends Component {
 
                 {createEventDialog}
                 <Divider/>
+                <Button className={classes.secondButton} variant={'contained'}
+                        onClick={this.handleCreateEventDialogOpen}>Create Event</Button>
             </ClickAwayListener>
             
         )

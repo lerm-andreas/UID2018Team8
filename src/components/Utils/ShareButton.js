@@ -5,7 +5,7 @@ export default class ShareButton extends Component {
   render() {
     return (
        <FacebookShareButton
-       url="google.com"
+        url="https://www.b4l.cz/images/informace/Parking.jpg"
        size="40px"/>)
   }
 }

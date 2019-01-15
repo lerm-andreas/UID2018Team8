@@ -6,6 +6,12 @@ import pic5 from './images/pony_car.jpg'
 import pic6 from './images/tricout-Cluj-Napoca.jpg'
 import pic7 from './images/recycling.jpg'
 import pic8 from './images/recycling2.jpg'
+import plant from './images/plant.PNG'
+import volunteers from './images/volunteers.png'
+import restoration from './images/restoration.png'
+import reciclare from './images/reciclare.PNG'
+import volunteers1 from './images/volunteers1.jpg'
+import roaba from './images/roaba.jpg'
 
 export function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
@@ -16,6 +22,7 @@ export const accounts = {
         username: 'admin',
         password: 'password',
         role: 'admin',
+<<<<<<< Updated upstream
         coins: 10000,
         firstName:"Constantin",
         secondName:"Ghiocel",
@@ -23,18 +30,25 @@ export const accounts = {
         address:"Strada Bucuresti nr. 70A",
         eMail:"ghio.costel@gmail.com",
 
+=======
+        coins: 10000
+        
+>>>>>>> Stashed changes
     },
     userAccount: {
         username: 'user',
         password: 'password',
         role: 'user',
         coins: 100,
+<<<<<<< Updated upstream
         
         firstName:"Constantin",
         secondName:"Ghiocel",
         birthday:"18.08.1996",
         address:"Strada Bucuresti nr. 70A",
         eMail:"ghio.costel@gmail.com",
+=======
+>>>>>>> Stashed changes
     }
 
 };
@@ -164,11 +178,15 @@ export const shoppingItems = [
 ];
 
 export let eventItems = [
-    {   image: pic8,
+    {   image: reciclare,
         title: "Event1",
         description: "He went such dare good mr fact. The small own seven saved man age ﻿no offer. Suspicion did mrs nor furniture smallness. Scale whole downs often leave not eat. An expression reasonably cultivated indulgence mr he surrounded instrument. Gentleman eat and consisted are pronounce distrusts."
     },
-    {   image: pic8,
+    {   image: volunteers,
+        title: "Event2",
+        description: "Desciere bla bla" 
+    },
+    {   image: roaba,
         title: "Event2",
         description: "Desciere bla bla" 
     },

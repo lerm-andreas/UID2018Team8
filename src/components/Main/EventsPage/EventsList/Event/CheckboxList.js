@@ -8,11 +8,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
-import pic1 from "../../../../../images/1.jpg";
-import pic2 from "../../../../../images/2.jpg";
-import pic3 from "../../../../../images/3.jpg";
-import pic4 from "../../../../../images/4.jpg";
-
+// import pic1 from "../../../../../images/1.jpg";
+// import pic2 from "../../../../../images/2.jpg";
+// import pic3 from "../../../../../images/3.jpg";
+// import pic4 from "../../../../../images/4.jpg";
+import pic1 from "../../../../../images/andreea.PNG";
+import pic2 from "../../../../../images/pasca.PNG";
+import pic3 from "../../../../../images/octav.PNG";
+import pic4 from "../../../../../images/andreas.PNG";
 const styles = theme => ({
   root: {
     width: '100%',
@@ -21,6 +24,7 @@ const styles = theme => ({
   },
 });
 const pics= [pic1,pic2,pic3,pic4];
+const users=['Andreea','Razvan','Octav','Andreas']
 class CheckboxListSecondary extends React.Component {
   state = {
     checked: [1],
@@ -55,7 +59,8 @@ class CheckboxListSecondary extends React.Component {
                 src={pics[0 + value]}
               />
             </ListItemAvatar>
-            <ListItemText primary={`User ${value + 1}`} />
+            {/* <ListItemText primary={`User ${value + 1}`} /> */}
+            <ListItemText primary={`${users[0 + value]}`} />
             <ListItemSecondaryAction>
               <Checkbox
                 onChange={this.handleToggle(value)}
