@@ -16,7 +16,7 @@ export class EventsPage extends Component {
     };
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             events: eventItems,
         };

@@ -13,7 +13,7 @@ import Divider from "@material-ui/core/Divider/Divider";
 
 const styles = theme => ({
     firstButton: {
-        marginLeft: "800px"
+        marginLeft: "65%"
     },
     secondButton: {
         marginLeft: "25px"

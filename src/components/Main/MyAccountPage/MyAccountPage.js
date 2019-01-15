@@ -24,6 +24,8 @@ const styles = theme => ({
         padding: 30,
         flexGrow: 1,
         marginTop: '20px',
+        marginLeft: '3%',
+
     }
 });
 
@@ -32,29 +34,30 @@ class MyAccountPage extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     render() {
         let {classes} = this.props;
         return (
             <div>
-                <UserHeader  searching={true} buying={false} handleShoppingCart={this.handleShoppingCart}/>
+                <UserHeader searching={true} buying={false}
+                            handleShoppingCart={this.handleShoppingCart}/>
                 <List container className={classes.container} spacing={24}>
-                 
-                <Grid className= {classes.item} item xs={4}>
-                    <UserInformation  className={classes.paper}
-                        
-                        firstName={localStorage.getItem("firstName")}
-                        secondName={localStorage.getItem("secondName")}
-                        birthday={localStorage.getItem("birthday")}
-                        address={localStorage.getItem("address")}
-                        eMail={localStorage.getItem("eMail")}
-                    />
-                </Grid>
-                {localStorage.getItem("role")==="admin" ? <Grid className= {classes.item} item xs={4}>
-                    <AdminSpecificTasks className={classes.paper}/>
-                </Grid > : null}
-                
-            </List>
+
+                    <Grid className={classes.item} item xs={4}>
+                        <UserInformation className={classes.paper}
+                                         firstName={localStorage.getItem("firstName")}
+                                         secondName={localStorage.getItem("secondName")}
+                                         birthday={localStorage.getItem("birthday")}
+                                         address={localStorage.getItem("address")}
+                                         eMail={localStorage.getItem("eMail")}
+                        />
+                    </Grid>
+                    {localStorage.getItem("role") === "admin" ?
+                        <Grid className={classes.item} item xs={4}>
+                            <AdminSpecificTasks className={classes.paper}/>
+                        </Grid> : null}
+
+                </List>
             </div>
         );
     }

@@ -8,15 +8,15 @@ export class BanUsersPage extends Component {
         super(props);
     }
 
-    
 
     render() {
         const {classes} = this.props;
         return (
             <div>
-            <UserHeader  searching={true} buying={false} handleShoppingCart={this.handleShoppingCart}/>
-            <h1>Ban Users</h1>
-            <ReportedUserList/>
+                <UserHeader searching={false} buying={false}
+                            handleShoppingCart={this.handleShoppingCart}/>
+                <h1 style={{}}>Ban Users</h1>
+                <ReportedUserList/>
             </div>
         );
     }
