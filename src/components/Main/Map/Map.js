@@ -26,6 +26,7 @@ class Map extends Component {
             role: localStorage.getItem('role'),
             showIssueDialog: false,
             showFeedbackDialog: false,
+            showAuthDialog:false,
         };
         this.addVote = this.addVote.bind(this);
         this.handleSendComment = this.handleSendComment.bind(this);
@@ -78,6 +79,19 @@ class Map extends Component {
         this.setState({markers: currMarkers, showIssueDialog: false});
     };
 
+    handleAdminChanges2 = (index, changes) => {
+        this.setState({showAuthDialog: false});
+    };
+
+    closeAuthDialog =() =>{
+        this.setState({showAuthDialog: false});
+    }
+
+    openAuthDialog = () =>{
+        this.setState({showAuthDialog: true});
+
+    }
+
     render() {
         let h = '100vh';
         let w = '100%';
@@ -95,8 +109,14 @@ class Map extends Component {
                     openIssueDialog={this.openIssueDialog}
                     closeFeedbackDialog={this.closeFeedbackDialog}
                     closeIssueDialog={this.closeIssueDialog}
+
                     showFeedbackDialog={this.state.showFeedbackDialog}
-                    showIssueDialog={this.state.showIssueDialog}/>
+                    showIssueDialog={this.state.showIssueDialog}
+
+                    handleAdminChanges2={this.handleAdminChanges2}
+                    closeAuthDialog={this.closeAuthDialog}
+                    openAuthDialog={this.openAuthDialog}
+                    showAuthDialog={this.state.showAuthDialog}/>
         ));
 
         return (

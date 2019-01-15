@@ -28,10 +28,21 @@ class LoginPage extends Component {
             this.props.history.push('/home');
             localStorage.setItem('coins', accounts.userAccount.coins);
             localStorage.setItem('role', accounts.userAccount.role);
+            localStorage.setItem('firstName', accounts.adminAccount.firstName);
+            localStorage.setItem('secondName', accounts.adminAccount.secondName);
+            localStorage.setItem('birthday', accounts.adminAccount.birthday);
+            localStorage.setItem('address', accounts.adminAccount.address);
+            localStorage.setItem('eMail', accounts.adminAccount.eMail);
         } else if (this.state.username === accounts.adminAccount.username && this.state.password === accounts.adminAccount.password) {
             this.props.history.push('/home');
             localStorage.setItem('coins', accounts.adminAccount.coins);
             localStorage.setItem('role', accounts.adminAccount.role);
+            localStorage.setItem('firstName', accounts.adminAccount.firstName);
+            localStorage.setItem('secondName', accounts.adminAccount.secondName);
+            localStorage.setItem('birthday', accounts.adminAccount.birthday);
+            localStorage.setItem('address', accounts.adminAccount.address);
+            localStorage.setItem('eMail', accounts.adminAccount.eMail);
+            
         }
         else {
             //TODO display some wrong input error

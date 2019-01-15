@@ -54,7 +54,7 @@ export class FormDialog extends React.Component {
                                    required={true}
                                    margin="normal"
                                    id="name"
-                                   label="Comment"
+                                   label="Please type your message here"
                                    type="text"
                                    fullWidth
                                    onChange={this.handleTextFieldChange}/>

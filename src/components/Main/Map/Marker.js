@@ -7,6 +7,7 @@ import {FormDialog} from "../../Utils/FormDialog";
 import ShareButton from "../../Utils/ShareButton";
 import {IssueDialog} from "../../Utils/IssueDialog";
 import {Categories, CategoryToIcon, getKeyByValue, Status, StatusToColor} from "../../../BACKEND";
+import { ContactAuthoritiesDialog } from '../../Utils/ContactAuthoritiesDialog';
 
 const styles = theme => ({
     fab: {
@@ -37,6 +38,7 @@ class Marker extends React.Component {
             showFeedbackDialog: false,
             showSharePost: false,
             showIssueDialog: false,
+            showContactAuthoritiesDialog: false
         };
         this.handleDialogOpen = this.handleDialogOpen.bind(this);
         this.handleDialogClose = this.handleDialogClose.bind(this);
@@ -78,6 +80,14 @@ class Marker extends React.Component {
         this.setState({showIssueDialog: false})
     };
 
+    handleContactAuthorities = () => {
+        this.setState({showContactAuthoritiesDialog: true})
+    }
+
+    handleContactAuthoritiesClose = () => {
+        this.setState({showContactAuthoritiesDialog: false})
+    }
+
     render() {
         const {classes} = this.props;
         let dialogWindow = null;
@@ -113,7 +123,7 @@ class Marker extends React.Component {
                               option1={"Change status"}
                               option2={"Contact authorities"}
                               onOption1={this.props.openIssueDialog}
-                              onOption2={this.handleContactAuthorities}/>
+                              onOption2={this.props.openAuthDialog}/>
         }
 
         return (
@@ -138,6 +148,11 @@ class Marker extends React.Component {
                              onClose={this.props.closeIssueDialog}
                              issue={this.props.marker}
                              handleAdminChanges={this.props.handleAdminChanges}/>
+                <ContactAuthoritiesDialog open={this.props.showAuthDialog}
+                            onClose={this.props.closeAuthDialog}
+                            issue={this.props.marker}
+                            handleAdminChanges2={this.props.handleAdminChanges2}/>
+
             </>
         )
     }

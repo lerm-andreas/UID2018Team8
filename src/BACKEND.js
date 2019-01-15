@@ -16,14 +16,25 @@ export const accounts = {
         username: 'admin',
         password: 'password',
         role: 'admin',
-        coins: 10000
+        coins: 10000,
+        firstName:"Constantin",
+        secondName:"Ghiocel",
+        birthday:"18.08.1996",
+        address:"Strada Bucuresti nr. 70A",
+        eMail:"ghio.costel@gmail.com",
 
     },
     userAccount: {
         username: 'user',
         password: 'password',
         role: 'user',
-        coins: 100
+        coins: 100,
+        
+        firstName:"Constantin",
+        secondName:"Ghiocel",
+        birthday:"18.08.1996",
+        address:"Strada Bucuresti nr. 70A",
+        eMail:"ghio.costel@gmail.com",
     }
 
 };
@@ -34,6 +45,12 @@ export const Status = {
     approved: 'Approved',
     completed: 'Completed'
 };
+
+export const Authorities = {
+    police: 'Police',
+    sanitationDepartment: 'Sanitation Department',
+    fireDepartment: 'Fire Department'
+}
 
 export const Categories = {
     socialAssistance: 'social assistance',
@@ -101,6 +118,9 @@ export const homePageUrl = "/home";
 export const eventsPageUrl = "/eventsPage";
 export const myAccountPageUrl = "/myAccount";
 export const powerUserReqUrl = "/powerRequest";
+export const managePowerUsersPageUrl = "/managePowerUsersPage";
+export const banUsersPageUrl = "/banUsersPage";
+
 
 export const shoppingItems = [
     {
@@ -162,4 +182,44 @@ export const cityAreas = {
     bunaziua: "Buna Ziua",
 };
 
+export const powerUserRequests = [
+    {   subject: "Buna ziua domn primar",
+        user: "boss07",
+        date: "23-12-2018",
+        message: "Buna ziua",
+    },
+    {   subject: "Nu merge bine autobuz",
+        user: "pista69",
+        date: "29-02-2019",
+        message: "Buna ziua",
+    },
+    {   subject: "VREM BANI INAPOIA",
+        user: "adi_jmen",
+        date: "29-02-2019",
+        message: "Buna ziua",
+    },
+    {   subject: "Am pierdut portofel",
+        user: "deyu_pisicu",
+        date: "29-02-2019",
+        message: "Buna ziua",
+    },
+];
 
+export const reportedUsers = [
+    {   reporter: "adi_printul",
+        reportedUser: "nelegiuitorul",
+        message: "Buna ziua",
+    },
+    {      reporter: "costel_vidanja",
+          reportedUser: "hapciucalit99",
+          message: "Buna ziua, '\n' Va Scriu in legatura cu cererea de Power User. Consider ca merit postul, votati-ma! '\n' TOATA STIMA",
+    },
+    {      reporter: "romanul_mandru",
+            reportedUser: "steven_the_killer",
+            message: "Buna ziua, '\n' Va Scriu in legatura cu cererea de Power User. Consider ca merit postul, votati-ma! '\n' TOATA STIMA",
+    },
+    {      reporter: "bananaboy",
+            reportedUser: "picaciul_zvelt007",
+            message: "Buna ziua, '\n' Va Scriu in legatura cu cererea de Power User. Consider ca merit postul, votati-ma! '\n' TOATA STIMA",
+    },
+];
