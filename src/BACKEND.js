@@ -22,7 +22,6 @@ export const accounts = {
         username: 'admin',
         password: 'password',
         role: 'admin',
-<<<<<<< Updated upstream
         coins: 10000,
         firstName:"Constantin",
         secondName:"Ghiocel",
@@ -30,25 +29,18 @@ export const accounts = {
         address:"Strada Bucuresti nr. 70A",
         eMail:"ghio.costel@gmail.com",
 
-=======
-        coins: 10000
-        
->>>>>>> Stashed changes
     },
     userAccount: {
         username: 'user',
         password: 'password',
         role: 'user',
         coins: 100,
-<<<<<<< Updated upstream
         
         firstName:"Constantin",
         secondName:"Ghiocel",
         birthday:"18.08.1996",
         address:"Strada Bucuresti nr. 70A",
         eMail:"ghio.costel@gmail.com",
-=======
->>>>>>> Stashed changes
     }
 
 };

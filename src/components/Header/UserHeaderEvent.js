@@ -14,7 +14,8 @@ import Divider from "@material-ui/core/Divider/Divider";
 
 const styles = theme => ({
     firstButton: {
-        marginLeft: "800px"
+
+        marginLeft: "65%"
     },
     secondButton: {
         marginLeft: "25px"
@@ -108,8 +109,8 @@ class UserHeaderEvent extends Component {
 
                 {createEventDialog}
                 <Divider/>
-                <Button className={classes.secondButton} variant={'contained'}
-                        onClick={this.handleCreateEventDialogOpen}>Create Event</Button>
+                {/* <Button className={classes.secondButton} variant={'contained'}
+                        onClick={this.handleCreateEventDialogOpen}>Create Event</Button> */}
             </ClickAwayListener>
             
         )

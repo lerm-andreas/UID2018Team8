@@ -35,14 +35,6 @@ export class EventsPage extends Component {
         localStorage.setItem('coins', parseInt(localStorage.getItem('coins'),10)+5);
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            events: eventItems,
-        };
-        this.handleCreateEvent = this.handleCreateEvent.bind(this);
-    }
-
     render() {
         let confimarionDialog = 
         <DialogWindow

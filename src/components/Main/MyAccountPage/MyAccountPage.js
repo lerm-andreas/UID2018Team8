@@ -24,7 +24,7 @@ const styles = theme => ({
         padding: 30,
         flexGrow: 1,
         marginTop: '20px',
-        marginLeft: '3%',
+        marginLeft: '11%',
 
     }
 });
