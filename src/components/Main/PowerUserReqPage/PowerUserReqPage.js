@@ -12,11 +12,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import ShoppingCart from "../ShopPage/ShoppingCart/ShoppingCart";
 import Modal from "@material-ui/core/Modal/Modal";
 import Typography from "@material-ui/core/Typography/Typography";
+import Uploader from "../../Utils/Uploader/Uploader";
+import InfoModal from "../../Utils/InfoModal";
 
 const styles = theme => ({
-    btn: {
-        marginTop: "10vh"
-    },
     paper: {
         position: 'absolute',
         width: theme.spacing.unit * 50,
@@ -24,6 +23,9 @@ const styles = theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
         outline: 'none',
+    },
+    uploader: {
+
     }
 });
 
@@ -83,10 +85,6 @@ class PowerUserReqPage extends Component {
     };
 
     render() {
-        let areaSelector =[];
-        Object.entries(cityAreas).forEach(([key,val]) => {
-            areaSelector.push(<MenuItem value={val}>{val}</MenuItem>)
-        });
 
         const {classes} = this.props;
 
@@ -94,36 +92,30 @@ class PowerUserReqPage extends Component {
             <div className="">
                 <UserHeader buying={false} searching={false}/>
                 <Card className={'request-card'}>
+                    <div>
                     <Select className={'request-sel'} value={this.state.area} onChange={this.handleChange} displayEmpty
                              inputProps={{
                                 name: 'area',
                                 id: 'search-area',
                             }}>
                         <MenuItem value="">Area*</MenuItem>
-                        {areaSelector}
+                        {cityAreas.map((area) =>
+                            <MenuItem value={area.name}>{area.name}</MenuItem>)
+                        }
                     </Select>
                     <TextField className={'request-textarea'} name={'motivation'} label={'Motivation*'} onChange={this.handleChange}
                         placeholder="Tell us the reason you want to become a power user"
                         multiline={true} rows={8} rowsMax={8}
                     />
                     <br/>
-                   //todo: uploader
+                    <div className={classes.uploader}>
+                        <Uploader/>
+                    </div>
                     <br/>
+                    </div>
                     <Button className={classes.btn} variant='contained' onClick={this.handleSubmit}>Submit</Button>
                 </Card>
-                <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={this.state.showModal} onClose={this.handleClose}>
-                    <div style={getModalStyle()} className={classes.paper}>
-                        <Typography variant="h6" id="modal-title">
-                            {this.state.modalTitle}
-                        </Typography>
-                        <Typography variant="subtitle1" id="simple-modal-description">
-                            {this.state.modalText}
-                        </Typography>
-                    </div>
-                </Modal>
+                <InfoModal open={this.state.showModal} close={this.handleClose} title={this.state.modalTitle} info={this.state.modalText}/>
             </div>
         )
     }

@@ -12,7 +12,7 @@ export class MainPage extends Component {
         }
     }
 
-    handleSearch = () => {
+    toggleSearch = () => {
         this.setState({
             searchOpen: !this.state.searchOpen
         })
@@ -20,9 +20,8 @@ export class MainPage extends Component {
 
     render() {
         return <div className="mainPage">
-            <UserHeader toggleSearch={this.handleSearch}
-                        buying={false} searching={true}/>
-            <Map toggleSearch={this.handleSearch} searchOpen={this.state.searchOpen}/>
+            <UserHeader toggleSearch={this.toggleSearch} buying={false} searching={true}/>
+            <Map toggleSearch={this.toggleSearch} searchOpen={this.state.searchOpen}/>
         </div>
     }
 }

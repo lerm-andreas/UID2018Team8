@@ -49,7 +49,16 @@ export const accounts = {
 export const Status = {
     inProgress: 'In Progress',
     approved: 'Approved',
-    completed: 'Completed'
+    completed: 'Completed',
+    new: 'New',
+    denied: 'Denied',
+};
+
+export const stringToStatus = (string) => {
+    if (string === 'In Progress') return Status.inProgress;
+    if (string === 'Approved') return Status.approved;
+    if (string ===  'Completed') return Status.completed;
+    if (string === 'New') return Status.new;
 };
 
 export const Authorities = {
@@ -59,24 +68,39 @@ export const Authorities = {
 }
 
 export const Categories = {
-    socialAssistance: 'social assistance',
-    trash: 'trash',
-    parking: 'parking',
-    traffic: 'traffic'
+    socialAssistance: 'Social Assistance',
+    trash: 'Trash',
+    parking: 'Parking',
+    traffic: 'Traffic',
+    damage: 'Damage',
+    structures: 'Structures / Roads'
     //TODO add more categories maybe???
+};
+
+export const stringToCategory = (string) => {
+    if (string === 'Social Assistance') return Categories.socialAssistance;
+    if (string === 'Trash') return Categories.trash;
+    if (string ===  'Parking') return Categories.parking;
+    if (string === 'Traffic') return Categories.traffic;
+    if (string === 'Damage') return Categories.damage;
+    if (string === 'Structures / Roads') return Categories.structures;
 };
 
 export const StatusToColor = {
     inProgress: "#0000d6",
     approved: "#7e3ff2",
-    completed: "#e98df5"
+    completed: "#e98df5",
+    new: "#7CFC00",
+    denied: '#FF0000',
 };
 
 export const CategoryToIcon = {
     socialAssistance: "people",
     parking: "local_parking",
     trash: "restore_from_trash",
-    traffic: "traffic"
+    traffic: "traffic",
+    damage: 'warning',
+    structures: 'build'
 };
 
 export const Markers = [
@@ -116,6 +140,66 @@ export const Markers = [
         userComments: ["Good ideea"],
         adminComments: ["Somebody will take care of it in one-two days"],
         description: "Un grup de oameni fara adapost s-au stabilit sub pod"
+    },
+    {
+        nr: 4,
+        lat: 46.765159886839974,
+        lng:  23.592650544235653,
+        category: Categories.trash,
+        status: Status.inProgress,
+        votes: 4,
+        beenVoted: false,
+        userComments: ["Looks horrible"],
+        adminComments: [],
+        description: "Oameni fara respect dumnule, nu se mai poate asa ceva, atata gunoi in acest loc e inimaginabil."
+    },
+    {
+        nr: 5,
+        lat: 46.75175086609276,
+        lng:  23.596853559533656,
+        category: Categories.structures,
+        status: Status.denied,
+        votes: 120,
+        beenVoted: false,
+        userComments: ["Ne rupem masinile","E asa de 2 ani, ne miram?"],
+        adminComments: ["Not an emergency right now"],
+        description: "Drum cu gropi"
+    },
+    {
+        nr: 6,
+        lat: 46.77293045785687,
+        lng:  23.606164383891155,
+        category: Categories.parking,
+        status: Status.new,
+        votes: 0,
+        beenVoted: false,
+        userComments: [],
+        adminComments: [],
+        description: "No aprking spots anywhere nearby in weekdays"
+    },
+    {
+        nr: 7,
+        lat: 46.77968818194501,
+        lng:   23.579839129684842,
+        category: Categories.damage,
+        status: Status.approved,
+        votes: 54,
+        beenVoted: false,
+        userComments: [],
+        adminComments: [],
+        description: "Felinare stricate si nu se ocupa nimeni de 3 luni"
+    },
+    {
+        nr: 7,
+        lat: 46.76318263878826,
+        lng: 23.572745360890167,
+        category: Categories.traffic,
+        status: Status.completed,
+        votes: 433,
+        beenVoted: false,
+        userComments: [],
+        adminComments: ['Noua banda de autobus adaugata pentru usurarea traficului'],
+        description: "65 de minute pe o portiune de 10km, nu e in regula"
     }
 ];
 
@@ -184,13 +268,15 @@ export let eventItems = [
     },
 ];
 
-export const cityAreas = {
-    manastur: "Manastur",
-    marasti: "Marasti",
-    centru: "Centru",
-    grigorescu: "Grigorescu",
-    bunaziua: "Buna Ziua",
-};
+export const cityAreas = [
+    {name: "Manastur", coords: {lat: 46.75268418032882, lng: 23.555689182281412}},
+    {name: "Marasti", coords: {lat: 46.78167019978652, lng: 23.61247305806728 }},
+    {name: "Centru", coords: {lat: 46.772091075853956, lng: 23.596324337858505}},
+    {name: "Gheorgheni",coords: {lat: 46.76809890830934, lng: 23.626355386358 }},
+    {name: "Buna Ziua",  coords: {lat: 46.75270396845513, lng: 23.610807454594806}},
+    {name: "Baciu", coords: {lat: 46.791721063293325, lng: 23.525972163527967}},
+    {name: "Gruia", coords: {lat: 46.77903577877201, lng: 23.57902389066919}},
+];
 
 export const powerUserRequests = [
     {   subject: "Buna ziua domn primar",

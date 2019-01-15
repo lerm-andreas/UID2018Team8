@@ -5,10 +5,17 @@ import {MainPage} from "./MainPage";
 import {ShopPage} from "./ShopPage/ShopPage";
 import {EventsPage} from "./EventsPage/EventsPage";
 import MyAccountPage from "./MyAccountPage/MyAccountPage";
+import {
+    shoppingPageUrl,
+    eventsPageUrl,
+    myAccountPageUrl,
+    banUsersPageUrl,
+    powerUserReqUrl,
+    managePowerUsersPageUrl
+} from "../../BACKEND";
 import PowerUserReqPage from "./PowerUserReqPage/PowerUserReqPage";
 import {ManagePowerUsersPage} from "./MyAccountPage/ManagePowerUsers/ManagePowerUsersPage"
 import {BanUsersPage} from "./MyAccountPage/BanUsers/BanUsersPage"
-import {shoppingPageUrl,eventsPageUrl,myAccountPageUrl,managePowerUsersPageUrl, banUsersPageUrl, powerUserReqUrl} from "../../BACKEND";
 
 const Main = () => {
     return (
