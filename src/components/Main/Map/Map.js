@@ -7,6 +7,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 import EmptyMarker from "./EmptyMarker";
 import CreateComponent from "./CreateComponent";
+import InfoModal from "../../Utils/InfoModal";
 const styles = {
     search: {
         width: '30vw',
@@ -32,6 +33,7 @@ class Map extends Component {
             showFeedbackDialog: false,
             showAuthDialog:false,
 
+            showThanksModal: false,
             markersCopy: Markers,
             showCreateDrawer: false,
             showEmptyMarker: false,
@@ -131,6 +133,7 @@ class Map extends Component {
         marker.lng = this.state.center.lng - 0.0021; //crede si nu cerceta
         localStorage.setItem('coins', parseInt(localStorage.getItem('coins'),10)+5);
         this.state.markers.push(marker);
+        this.setState({showThanksModal: true});
     };
 
     updateDisplayFilter = (displayFilter) => {
@@ -223,6 +226,8 @@ class Map extends Component {
                         }
                     </GoogleMapReact>
                 </div>
+                <InfoModal open={this.state.showThanksModal} close={() => this.setState({showThanksModal: false})}
+                            title={"Thank you for your feedback!"} info={"The city rewards you with 10 Cluj Coin for your contribution"}/>
 
                 {/*Search Drawer*/}
                <SearchComponent show={this.props.searchOpen} close={this.props.toggleSearch}

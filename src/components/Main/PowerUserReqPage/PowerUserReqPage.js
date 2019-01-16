@@ -11,6 +11,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Uploader from "../../Utils/Uploader/Uploader";
 import InfoModal from "../../Utils/InfoModal";
 import CardHeader from "@material-ui/core/CardHeader/CardHeader";
+import Typography from "@material-ui/core/Typography/Typography";
 
 const styles = theme => ({
     paper: {
@@ -21,8 +22,10 @@ const styles = theme => ({
         padding: theme.spacing.unit * 4,
         outline: 'none',
     },
-    uploader: {
-
+    label: {
+        float: 'left',
+        marginLeft: '3vw',
+        marginTop: '5vw',
     }
 });
 
@@ -91,25 +94,25 @@ class PowerUserReqPage extends Component {
                 <Card className={'request-card'}>
                     <CardHeader title={" Power user request. Please fill in the details"}/>
                     <div>
-                    <Select className={'request-sel'} value={this.state.area} onChange={this.handleChange} displayEmpty
-                             inputProps={{
-                                name: 'area',
-                                id: 'search-area',
-                            }}>
-                        <MenuItem value="">Area*</MenuItem>
-                        {cityAreas.map((area) =>
-                            <MenuItem value={area.name}>{area.name}</MenuItem>)
-                        }
-                    </Select>
-                    <TextField className={'request-textarea'} name={'motivation'} label={'Motivation*'} onChange={this.handleChange}
-                        placeholder="Tell us the reason you want to become a power user"
-                        multiline={true} rows={8} rowsMax={8}
-                    />
-                    <br/>
-                    <div className={classes.uploader}>
-                        <Uploader/>
-                    </div>
-                    <br/>
+                        <Select className={'request-sel'} value={this.state.area} onChange={this.handleChange} displayEmpty
+                                 inputProps={{
+                                    name: 'area',
+                                    id: 'search-area',
+                                }}>
+                            <MenuItem value="">Please select your area*</MenuItem>
+                            {cityAreas.map((area) =>
+                                <MenuItem value={area.name}>{area.name}</MenuItem>)
+                            }
+                        </Select>
+                        <TextField className={'request-textarea'} name={'motivation'} label={'What is your motivation?*'} onChange={this.handleChange}
+                            placeholder="Tell us the reason you want to become a power user"
+                            multiline={true} rows={8} rowsMax={8}
+                        />
+                        <br/>
+                        <div className={classes.uploader}>
+                            <Uploader/>
+                        </div>
+                        <br/>
                     </div>
                     <Button className={classes.btn} color="primary" variant='contained'
                             onClick={this.handleSubmit}>Submit</Button>

@@ -4,8 +4,19 @@ import Button from "@material-ui/core/Button/Button"
 import LoginHeader from "../../Header/LoginHeader";
 import {accounts} from "../../../BACKEND";
 import background from '../../../images/cluj.jpg'
+import withStyles from "@material-ui/core/styles/withStyles";
 
-
+const styles = theme => ({
+   form: {
+       marginTop: '10vw',
+   },
+   txt: {
+       marginBottom: '1vw',
+   },
+    btn: {
+       marginTop: '8px',
+    }
+});
 
 class LoginPage extends Component {
     constructor(props) {
@@ -55,20 +66,20 @@ class LoginPage extends Component {
     };
 
     render() {
+        const {classes} = this.props;
         return (
             <div >
                 <LoginHeader/>
-                <form onSubmit={this.handleSubmit}>
+                <form className={classes.form} onSubmit={this.handleSubmit}>
                     <TextField name={'username'} label={'Username'} type={'text'} required={true}
-                               onChange={this.handleChange}/><br/>
-                    <TextField name={'password'} label={'Password'} type={'password'}
-                               required={true}
-                               onChange={this.handleChange}/><br/>
-                    <Button type={'submit'} variant='contained'>Submit</Button>
+                               onChange={this.handleChange} className={classes.txt}/><br/>
+                    <TextField name={'password'} label={'Password'} type={'password'} required={true}
+                               onChange={this.handleChange} className={classes.txt}/><br/>
+                    <Button className={classes.btn} type={'submit'} variant='contained' color={"primary"}>Submit</Button>
                 </form>
             </div>
         )
     }
 }
 
-export default LoginPage;
+export default withStyles(styles)(LoginPage);
